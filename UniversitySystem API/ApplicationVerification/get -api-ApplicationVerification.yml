@@ -1,0 +1,30 @@
+info:
+  name: get /api/ApplicationVerification
+  type: http
+  seq: 3
+  tags:
+    - ApplicationVerification
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/ApplicationVerification"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/ApplicationVerification"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

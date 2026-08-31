@@ -1,0 +1,78 @@
+info:
+  name: get /api/Report/admitted-students-pdf
+  type: http
+  seq: 11
+  tags:
+    - Report
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/Report/admitted-students-pdf"
+  params:
+    - name: degreeId
+      value: ""
+      type: query
+      disabled: true
+    - name: courseId
+      value: ""
+      type: query
+      disabled: true
+    - name: academicYearId
+      value: ""
+      type: query
+      disabled: true
+    - name: category
+      value: ""
+      type: query
+      disabled: true
+    - name: admitYn
+      value: ""
+      type: query
+      disabled: true
+    - name: download
+      value: "false"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/Report/admitted-students-pdf"
+      method: GET
+      params:
+        - name: degreeId
+          value: ""
+          type: query
+          disabled: true
+        - name: courseId
+          value: ""
+          type: query
+          disabled: true
+        - name: academicYearId
+          value: ""
+          type: query
+          disabled: true
+        - name: category
+          value: ""
+          type: query
+          disabled: true
+        - name: admitYn
+          value: ""
+          type: query
+          disabled: true
+        - name: download
+          value: "false"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

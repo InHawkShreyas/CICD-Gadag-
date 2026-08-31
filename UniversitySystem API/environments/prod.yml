@@ -1,0 +1,4 @@
+name: prod
+variables:
+  - name: baseUrl
+    value: https://mgrdpradmissions.inhawk.com

@@ -1,0 +1,56 @@
+info:
+  name: put /api/EducationDetail
+  type: http
+  seq: 3
+  tags:
+    - EducationDetail
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/api/EducationDetail"
+  body:
+    type: json
+    data: |-
+      {
+        "id": "",
+        "examName": "",
+        "maxMarks": 0,
+        "obtainedMarks": 0,
+        "registrationNumber": "",
+        "percentage": 0,
+        "cgpa": 0,
+        "year": 0
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/EducationDetail"
+      method: PUT
+      body:
+        type: json
+        data: |-
+          {
+            "id": "",
+            "examName": "",
+            "maxMarks": 0,
+            "obtainedMarks": 0,
+            "registrationNumber": "",
+            "percentage": 0,
+            "cgpa": 0,
+            "year": 0
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

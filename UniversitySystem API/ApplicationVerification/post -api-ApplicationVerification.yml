@@ -1,0 +1,50 @@
+info:
+  name: post /api/ApplicationVerification
+  type: http
+  seq: 1
+  tags:
+    - ApplicationVerification
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/ApplicationVerification"
+  body:
+    type: json
+    data: |-
+      {
+        "applicationId": "",
+        "appNo": "",
+        "verificationStatus": "",
+        "remark": "",
+        "installment": 0
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/ApplicationVerification"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "applicationId": "",
+            "appNo": "",
+            "verificationStatus": "",
+            "remark": "",
+            "installment": 0
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

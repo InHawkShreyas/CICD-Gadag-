@@ -1,0 +1,62 @@
+info:
+  name: put /api/Student
+  type: http
+  seq: 3
+  tags:
+    - Student
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/api/Student"
+  body:
+    type: json
+    data: |-
+      {
+        "insertBy": "",
+        "updateBy": "",
+        "insertOn": "",
+        "updateOn": "",
+        "status": false,
+        "id": "",
+        "studentName": "",
+        "registrationNumber": "",
+        "degreeId": "",
+        "courseId": "",
+        "academicYearId": ""
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/Student"
+      method: PUT
+      body:
+        type: json
+        data: |-
+          {
+            "insertBy": "",
+            "updateBy": "",
+            "insertOn": "",
+            "updateOn": "",
+            "status": false,
+            "id": "",
+            "studentName": "",
+            "registrationNumber": "",
+            "degreeId": "",
+            "courseId": "",
+            "academicYearId": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

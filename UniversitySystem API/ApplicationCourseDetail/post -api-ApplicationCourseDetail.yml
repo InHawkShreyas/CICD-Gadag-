@@ -1,0 +1,52 @@
+info:
+  name: post /api/ApplicationCourseDetail
+  type: http
+  seq: 1
+  tags:
+    - ApplicationCourseDetail
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/ApplicationCourseDetail"
+  body:
+    type: json
+    data: |-
+      {
+        "applicationId": "",
+        "applicationNo": "",
+        "hostelFacilityYn": false,
+        "transportFacilityYn": false,
+        "degreeId": "",
+        "courseId": ""
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/ApplicationCourseDetail"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "applicationId": "",
+            "applicationNo": "",
+            "hostelFacilityYn": false,
+            "transportFacilityYn": false,
+            "degreeId": "",
+            "courseId": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

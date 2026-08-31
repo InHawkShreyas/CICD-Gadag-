@@ -1,0 +1,44 @@
+info:
+  name: post /api/otp/send
+  type: http
+  seq: 1
+  tags:
+    - Otp
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/otp/send"
+  body:
+    type: json
+    data: |-
+      {
+        "username": "",
+        "mobile": ""
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/otp/send"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "username": "",
+            "mobile": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

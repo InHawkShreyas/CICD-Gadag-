@@ -1,0 +1,38 @@
+info:
+  name: delete /api/registration/:username
+  type: http
+  seq: 4
+  tags:
+    - Registration
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/api/registration/:username"
+  params:
+    - name: username
+      value: ""
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/registration/:username"
+      method: DELETE
+      params:
+        - name: username
+          value: ""
+          type: path
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

@@ -1,0 +1,92 @@
+info:
+  name: post /api/AdmissionFeeStructure
+  type: http
+  seq: 1
+  tags:
+    - AdmissionFeeStructure
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/AdmissionFeeStructure"
+  body:
+    type: json
+    data: |-
+      {
+        "insertBy": "",
+        "updateBy": "",
+        "insertOn": "",
+        "updateOn": "",
+        "status": false,
+        "id": "",
+        "feeName": "",
+        "totalAmount": 0,
+        "courseId": "",
+        "degreeId": "",
+        "categoryId": "",
+        "academicYearId": "",
+        "deductionYn": false,
+        "details": [
+          {
+            "insertBy": "",
+            "updateBy": "",
+            "insertOn": "",
+            "updateOn": "",
+            "status": false,
+            "id": "",
+            "headerId": "",
+            "particularName": "",
+            "amount": 0
+          }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/AdmissionFeeStructure"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "insertBy": "",
+            "updateBy": "",
+            "insertOn": "",
+            "updateOn": "",
+            "status": false,
+            "id": "",
+            "feeName": "",
+            "totalAmount": 0,
+            "courseId": "",
+            "degreeId": "",
+            "categoryId": "",
+            "academicYearId": "",
+            "deductionYn": false,
+            "details": [
+              {
+                "insertBy": "",
+                "updateBy": "",
+                "insertOn": "",
+                "updateOn": "",
+                "status": false,
+                "id": "",
+                "headerId": "",
+                "particularName": "",
+                "amount": 0
+              }
+            ]
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

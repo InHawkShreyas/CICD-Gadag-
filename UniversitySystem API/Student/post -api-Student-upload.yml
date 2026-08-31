@@ -1,0 +1,60 @@
+info:
+  name: post /api/Student/upload
+  type: http
+  seq: 1
+  tags:
+    - Student
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/Student/upload"
+  body:
+    type: multipart-form
+    data:
+      - name: DegreeId
+        type: text
+        value: ""
+      - name: CourseId
+        type: text
+        value: ""
+      - name: AcademicYearId
+        type: text
+        value: ""
+      - name: File
+        type: file
+        value: []
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/Student/upload"
+      method: POST
+      body:
+        type: multipart-form
+        data:
+          - name: DegreeId
+            type: text
+            value: ""
+          - name: CourseId
+            type: text
+            value: ""
+          - name: AcademicYearId
+            type: text
+            value: ""
+          - name: File
+            type: file
+            value: []
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

@@ -1,0 +1,40 @@
+info:
+  name: post /api/sms/send-otp
+  type: http
+  seq: 2
+  tags:
+    - Sms
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/sms/send-otp"
+  params:
+    - name: mobile
+      value: ""
+      type: query
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/sms/send-otp"
+      method: POST
+      params:
+        - name: mobile
+          value: ""
+          type: query
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

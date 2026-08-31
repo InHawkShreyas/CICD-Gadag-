@@ -1,0 +1,66 @@
+info:
+  name: post /api/ApplicationPhoto
+  type: http
+  seq: 1
+  tags:
+    - ApplicationPhoto
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/ApplicationPhoto"
+  body:
+    type: multipart-form
+    data:
+      - name: applicationId
+        type: text
+        value: ""
+      - name: appNo
+        type: text
+        value: ""
+      - name: photo
+        type: file
+        value: []
+      - name: signature
+        type: file
+        value: []
+      - name: parentSignature
+        type: file
+        value: []
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/ApplicationPhoto"
+      method: POST
+      body:
+        type: multipart-form
+        data:
+          - name: applicationId
+            type: text
+            value: ""
+          - name: appNo
+            type: text
+            value: ""
+          - name: photo
+            type: file
+            value: []
+          - name: signature
+            type: file
+            value: []
+          - name: parentSignature
+            type: file
+            value: []
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

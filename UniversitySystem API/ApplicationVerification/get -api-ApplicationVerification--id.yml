@@ -1,0 +1,38 @@
+info:
+  name: get /api/ApplicationVerification/:id
+  type: http
+  seq: 4
+  tags:
+    - ApplicationVerification
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/ApplicationVerification/:id"
+  params:
+    - name: id
+      value: ""
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/ApplicationVerification/:id"
+      method: GET
+      params:
+        - name: id
+          value: ""
+          type: path
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

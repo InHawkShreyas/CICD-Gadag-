@@ -1,0 +1,38 @@
+info:
+  name: get /api/FeeCollection/receipt/:receiptNumber
+  type: http
+  seq: 6
+  tags:
+    - FeeCollection
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/FeeCollection/receipt/:receiptNumber"
+  params:
+    - name: receiptNumber
+      value: ""
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/FeeCollection/receipt/:receiptNumber"
+      method: GET
+      params:
+        - name: receiptNumber
+          value: ""
+          type: path
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

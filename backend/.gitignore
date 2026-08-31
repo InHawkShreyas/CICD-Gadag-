@@ -1,0 +1,102 @@
+# =========================
+# .NET / Visual Studio
+# =========================
+bin/
+obj/
+.vs/
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Auto-generated Assembly Info (IMPORTANT 🔥)
+**/obj/**
+**/*.AssemblyInfo.cs
+
+# =========================
+# Build Results
+# =========================
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+
+# =========================
+# IDEs
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# =========================
+# NuGet
+# =========================
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# =========================
+# Entity Framework
+# =========================
+*.edmx
+*.edmx.diagram
+
+# =========================
+# Node / Frontend (Vite/React)
+# =========================
+node_modules/
+dist/
+build/
+npm-debug.log*
+yarn-error.log*
+
+# =========================
+# Environment Files
+# =========================
+.env
+.env.*
+appsettings.Production.json
+appsettings.Development.json
+# =========================
+# Database Files
+# =========================
+*.db
+*.sqlite
+*.sqlite3
+*.mdf
+*.ldf
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# Test Results
+# =========================
+TestResults/
+coverage/
+*.trx
+
+# =========================
+# Temp Files
+# =========================
+tmp/
+temp/
+*.tmp
+
+# =========================
+# Azure / CI
+# =========================
+.azure/
+
+# (Optional) keep GitHub workflows — usually you WANT this
+# .github/   <-- ❌ remove this line unless intentional

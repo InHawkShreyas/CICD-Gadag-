@@ -1,0 +1,48 @@
+info:
+  name: post /api/university
+  type: http
+  seq: 1
+  tags:
+    - University
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/university"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "",
+        "address": "",
+        "phoneNo": "",
+        "email": ""
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/university"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "name": "",
+            "address": "",
+            "phoneNo": "",
+            "email": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

@@ -1,0 +1,38 @@
+info:
+  name: get /api/PhonePe/verify/:receiptNo
+  type: http
+  seq: 2
+  tags:
+    - PhonePe
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/PhonePe/verify/:receiptNo"
+  params:
+    - name: receiptNo
+      value: ""
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/PhonePe/verify/:receiptNo"
+      method: GET
+      params:
+        - name: receiptNo
+          value: ""
+          type: path
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

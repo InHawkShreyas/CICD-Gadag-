@@ -1,0 +1,46 @@
+info:
+  name: put /api/SeatType
+  type: http
+  seq: 3
+  tags:
+    - SeatType
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/api/SeatType"
+  body:
+    type: json
+    data: |-
+      {
+        "id": "",
+        "seatTypeId": "",
+        "seatTypeName": ""
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/SeatType"
+      method: PUT
+      body:
+        type: json
+        data: |-
+          {
+            "id": "",
+            "seatTypeId": "",
+            "seatTypeName": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

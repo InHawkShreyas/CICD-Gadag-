@@ -1,0 +1,56 @@
+info:
+  name: get /api/AdmissionFeeStructure/by-filters
+  type: http
+  seq: 6
+  tags:
+    - AdmissionFeeStructure
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/AdmissionFeeStructure/by-filters"
+  params:
+    - name: degreeId
+      value: ""
+      type: query
+      disabled: true
+    - name: courseId
+      value: ""
+      type: query
+      disabled: true
+    - name: categoryId
+      value: ""
+      type: query
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/AdmissionFeeStructure/by-filters"
+      method: GET
+      params:
+        - name: degreeId
+          value: ""
+          type: query
+          disabled: true
+        - name: courseId
+          value: ""
+          type: query
+          disabled: true
+        - name: categoryId
+          value: ""
+          type: query
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

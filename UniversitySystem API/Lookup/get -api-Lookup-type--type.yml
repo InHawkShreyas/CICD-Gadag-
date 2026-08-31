@@ -1,0 +1,46 @@
+info:
+  name: get /api/Lookup/type/:type
+  type: http
+  seq: 5
+  tags:
+    - Lookup
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/Lookup/type/:type"
+  params:
+    - name: type
+      value: ""
+      type: path
+    - name: type2
+      value: ""
+      type: query
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/Lookup/type/:type"
+      method: GET
+      params:
+        - name: type
+          value: ""
+          type: path
+        - name: type2
+          value: ""
+          type: query
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

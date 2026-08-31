@@ -1,0 +1,52 @@
+info:
+  name: put /api/courses
+  type: http
+  seq: 3
+  tags:
+    - Course
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/api/courses"
+  body:
+    type: json
+    data: |-
+      {
+        "id": "",
+        "degreeId": "",
+        "name": "",
+        "code": "",
+        "totalSeats": 0,
+        "applicationFee": 0
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/courses"
+      method: PUT
+      body:
+        type: json
+        data: |-
+          {
+            "id": "",
+            "degreeId": "",
+            "name": "",
+            "code": "",
+            "totalSeats": 0,
+            "applicationFee": 0
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

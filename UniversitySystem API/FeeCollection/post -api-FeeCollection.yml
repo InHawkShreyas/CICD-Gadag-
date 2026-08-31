@@ -1,0 +1,58 @@
+info:
+  name: post /api/FeeCollection
+  type: http
+  seq: 1
+  tags:
+    - FeeCollection
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/FeeCollection"
+  body:
+    type: json
+    data: |-
+      {
+        "applicationId": "",
+        "applicationNo": "",
+        "name": "",
+        "email": "",
+        "mobile": "",
+        "amount": 0,
+        "platformCharges": 0,
+        "receiptNumber": "",
+        "feeType": ""
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/FeeCollection"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "applicationId": "",
+            "applicationNo": "",
+            "name": "",
+            "email": "",
+            "mobile": "",
+            "amount": 0,
+            "platformCharges": 0,
+            "receiptNumber": "",
+            "feeType": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

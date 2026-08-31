@@ -1,0 +1,48 @@
+info:
+  name: put /api/ApplicationVerification
+  type: http
+  seq: 2
+  tags:
+    - ApplicationVerification
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/api/ApplicationVerification"
+  body:
+    type: json
+    data: |-
+      {
+        "id": "",
+        "verificationStatus": "",
+        "remark": "",
+        "installment": 0
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/ApplicationVerification"
+      method: PUT
+      body:
+        type: json
+        data: |-
+          {
+            "id": "",
+            "verificationStatus": "",
+            "remark": "",
+            "installment": 0
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

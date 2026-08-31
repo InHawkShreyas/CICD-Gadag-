@@ -1,0 +1,52 @@
+info:
+  name: put /api/FeeCollection/payment
+  type: http
+  seq: 3
+  tags:
+    - FeeCollection
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/api/FeeCollection/payment"
+  body:
+    type: json
+    data: |-
+      {
+        "receiptNumber": "",
+        "orderId": "",
+        "transactionId": "",
+        "paidAmount": 0,
+        "status": "",
+        "paymentDate": ""
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/FeeCollection/payment"
+      method: PUT
+      body:
+        type: json
+        data: |-
+          {
+            "receiptNumber": "",
+            "orderId": "",
+            "transactionId": "",
+            "paidAmount": 0,
+            "status": "",
+            "paymentDate": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

@@ -1,0 +1,60 @@
+info:
+  name: post /api/PhonePe/create
+  type: http
+  seq: 1
+  tags:
+    - PhonePe
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/PhonePe/create"
+  body:
+    type: json
+    data: |-
+      {
+        "receiptNumber": "",
+        "applicationNo": "",
+        "amount": 0,
+        "name": "",
+        "email": "",
+        "phone": "",
+        "courseName": "",
+        "degreeName": "",
+        "category": "",
+        "nationality": ""
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/PhonePe/create"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "receiptNumber": "",
+            "applicationNo": "",
+            "amount": 0,
+            "name": "",
+            "email": "",
+            "phone": "",
+            "courseName": "",
+            "degreeName": "",
+            "category": "",
+            "nationality": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

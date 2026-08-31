@@ -1,0 +1,48 @@
+info:
+  name: put /api/AcademicYear
+  type: http
+  seq: 3
+  tags:
+    - AcademicYear
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/api/AcademicYear"
+  body:
+    type: json
+    data: |-
+      {
+        "id": "",
+        "description": "",
+        "startDate": "",
+        "endDate": ""
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/AcademicYear"
+      method: PUT
+      body:
+        type: json
+        data: |-
+          {
+            "id": "",
+            "description": "",
+            "startDate": "",
+            "endDate": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

@@ -1,0 +1,30 @@
+info:
+  name: get /api/AuditLog
+  type: http
+  seq: 1
+  tags:
+    - AuditLog
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/AuditLog"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/AuditLog"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

@@ -1,0 +1,15 @@
+info:
+  name: webhook
+  type: http
+  seq: 32
+
+http:
+  method: POST
+  url: https://api-preprod.phonepe.com/apis/pg-sandbox/webhook/v1/create
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

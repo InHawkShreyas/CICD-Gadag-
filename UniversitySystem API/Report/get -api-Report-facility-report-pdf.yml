@@ -1,0 +1,86 @@
+info:
+  name: get /api/Report/facility-report-pdf
+  type: http
+  seq: 9
+  tags:
+    - Report
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/Report/facility-report-pdf"
+  params:
+    - name: degreeId
+      value: ""
+      type: query
+      disabled: true
+    - name: courseId
+      value: ""
+      type: query
+      disabled: true
+    - name: academicYearId
+      value: ""
+      type: query
+      disabled: true
+    - name: facilityType
+      value: ""
+      type: query
+      disabled: true
+    - name: gender
+      value: ""
+      type: query
+      disabled: true
+    - name: status
+      value: ""
+      type: query
+      disabled: true
+    - name: download
+      value: "false"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/Report/facility-report-pdf"
+      method: GET
+      params:
+        - name: degreeId
+          value: ""
+          type: query
+          disabled: true
+        - name: courseId
+          value: ""
+          type: query
+          disabled: true
+        - name: academicYearId
+          value: ""
+          type: query
+          disabled: true
+        - name: facilityType
+          value: ""
+          type: query
+          disabled: true
+        - name: gender
+          value: ""
+          type: query
+          disabled: true
+        - name: status
+          value: ""
+          type: query
+          disabled: true
+        - name: download
+          value: "false"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

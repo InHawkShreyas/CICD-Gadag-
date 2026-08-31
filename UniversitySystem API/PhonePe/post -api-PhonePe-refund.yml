@@ -1,0 +1,30 @@
+info:
+  name: post /api/PhonePe/refund
+  type: http
+  seq: 3
+  tags:
+    - PhonePe
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/PhonePe/refund"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/PhonePe/refund"
+      method: POST
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

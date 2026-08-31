@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <!-- 🔥 PROJECT REFERENCES -->
+  <ItemGroup>
+    <ProjectReference Include="../UniversitySystem.Infrastructure/UniversitySystem.Infrastructure.csproj" />
+    <ProjectReference Include="../UniversitySystem.Application/UniversitySystem.Application.csproj" />
+    <ProjectReference Include="../UniversitySystem.Domain/UniversitySystem.Domain.csproj" />
+  </ItemGroup>
+
+  <!-- 📦 PACKAGES -->
+  <ItemGroup>
+
+    <!-- 📘 Swagger (ONLY ONE VERSION - STABLE) -->
+    <PackageReference Include="QuestPDF" Version="2026.2.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.12" />
+
+    <!-- 🔥 EF Core -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.5" />
+
+    <!-- 🐘 PostgreSQL -->
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
+
+    <!-- 🔐 JWT -->
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.5" />
+
+    <!-- 🔥 Scrutor -->
+    <PackageReference Include="Scrutor" Version="7.0.0" />
+
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,7 @@
+info:
+  name: PhonePeWebhook
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

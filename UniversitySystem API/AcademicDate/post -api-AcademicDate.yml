@@ -1,0 +1,48 @@
+info:
+  name: post /api/AcademicDate
+  type: http
+  seq: 1
+  tags:
+    - AcademicDate
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/AcademicDate"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "",
+        "description": "",
+        "startDate": "",
+        "endDate": ""
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/AcademicDate"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "name": "",
+            "description": "",
+            "startDate": "",
+            "endDate": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

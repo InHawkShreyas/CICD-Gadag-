@@ -1,0 +1,48 @@
+info:
+  name: post /api/degree
+  type: http
+  seq: 1
+  tags:
+    - Degree
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/degree"
+  body:
+    type: json
+    data: |-
+      {
+        "universityId": "",
+        "degreeName": "",
+        "duration": "",
+        "description": ""
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/degree"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "universityId": "",
+            "degreeName": "",
+            "duration": "",
+            "description": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

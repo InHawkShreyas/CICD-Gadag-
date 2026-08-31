@@ -1,0 +1,54 @@
+info:
+  name: post /api/Easebuzz/create-payment-link
+  type: http
+  seq: 1
+  tags:
+    - Easebuzz
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/Easebuzz/create-payment-link"
+  body:
+    type: json
+    data: |-
+      {
+        "receiptNo": "",
+        "applicationId": "",
+        "name": "",
+        "email": "",
+        "phone": "",
+        "collegePayable": 0,
+        "serviceCharge": 0
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/Easebuzz/create-payment-link"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "receiptNo": "",
+            "applicationId": "",
+            "name": "",
+            "email": "",
+            "phone": "",
+            "collegePayable": 0,
+            "serviceCharge": 0
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

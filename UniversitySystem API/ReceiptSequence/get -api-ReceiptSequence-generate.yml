@@ -1,0 +1,30 @@
+info:
+  name: get /api/ReceiptSequence/generate
+  type: http
+  seq: 1
+  tags:
+    - ReceiptSequence
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/ReceiptSequence/generate"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/ReceiptSequence/generate"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

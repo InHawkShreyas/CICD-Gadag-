@@ -1,0 +1,96 @@
+info:
+  name: put /api/Notification
+  type: http
+  seq: 2
+  tags:
+    - Notification
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/api/Notification"
+  body:
+    type: multipart-form
+    data:
+      - name: id
+        type: text
+        value: ""
+      - name: title
+        type: text
+        value: ""
+      - name: description
+        type: text
+        value: ""
+      - name: date
+        type: text
+        value: ""
+      - name: ContentType
+        type: text
+        value: ""
+      - name: ContentDisposition
+        type: text
+        value: ""
+      - name: Headers
+        type: text
+        value: ""
+      - name: Length
+        type: text
+        value: ""
+      - name: Name
+        type: text
+        value: ""
+      - name: FileName
+        type: text
+        value: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/Notification"
+      method: PUT
+      body:
+        type: multipart-form
+        data:
+          - name: id
+            type: text
+            value: ""
+          - name: title
+            type: text
+            value: ""
+          - name: description
+            type: text
+            value: ""
+          - name: date
+            type: text
+            value: ""
+          - name: ContentType
+            type: text
+            value: ""
+          - name: ContentDisposition
+            type: text
+            value: ""
+          - name: Headers
+            type: text
+            value: ""
+          - name: Length
+            type: text
+            value: ""
+          - name: Name
+            type: text
+            value: ""
+          - name: FileName
+            type: text
+            value: ""
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

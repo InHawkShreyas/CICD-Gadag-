@@ -1,0 +1,44 @@
+info:
+  name: post /api/login/update-role
+  type: http
+  seq: 5
+  tags:
+    - Login
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/login/update-role"
+  body:
+    type: json
+    data: |-
+      {
+        "username": "",
+        "roleId": ""
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/login/update-role"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "username": "",
+            "roleId": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

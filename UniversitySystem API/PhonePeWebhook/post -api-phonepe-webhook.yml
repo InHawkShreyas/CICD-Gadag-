@@ -1,0 +1,30 @@
+info:
+  name: post /api/phonepe/webhook
+  type: http
+  seq: 1
+  tags:
+    - PhonePeWebhook
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/phonepe/webhook"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/phonepe/webhook"
+      method: POST
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

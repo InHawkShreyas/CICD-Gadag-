@@ -1,0 +1,38 @@
+info:
+  name: get /api/Notification/:id/file
+  type: http
+  seq: 6
+  tags:
+    - Notification
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/Notification/:id/file"
+  params:
+    - name: id
+      value: ""
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/Notification/:id/file"
+      method: GET
+      params:
+        - name: id
+          value: ""
+          type: path
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

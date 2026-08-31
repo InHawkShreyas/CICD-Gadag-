@@ -1,0 +1,38 @@
+info:
+  name: get /api/application-documents/download/:id
+  type: http
+  seq: 7
+  tags:
+    - ApplicationDocument
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/application-documents/download/:id"
+  params:
+    - name: id
+      value: ""
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/application-documents/download/:id"
+      method: GET
+      params:
+        - name: id
+          value: ""
+          type: path
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

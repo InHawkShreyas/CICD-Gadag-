@@ -1,0 +1,130 @@
+info:
+  name: put /api/Application/:appNo
+  type: http
+  seq: 5
+  tags:
+    - Application
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/api/Application/:appNo"
+  params:
+    - name: appNo
+      value: ""
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "academicYearId": "",
+        "appNo": "",
+        "name": "",
+        "dob": "",
+        "phone": "",
+        "email": "",
+        "placeOfBirth": "",
+        "gender": "",
+        "nationalityId": "",
+        "karnatakaYn": false,
+        "aadharNo": "",
+        "passportNo": "",
+        "religion": "",
+        "categoryId": "",
+        "caste": "",
+        "annualIncome": 0,
+        "rdNumber": "",
+        "casteRdNumber": "",
+        "apaarId": "",
+        "statsId": "",
+        "fatherName": "",
+        "fatherNo": "",
+        "fatherOccupation": "",
+        "motherName": "",
+        "motherNo": "",
+        "motherOccupation": "",
+        "guardianName": "",
+        "guardianNo": "",
+        "permanentAddressLine1": "",
+        "permanentAddressLine2": "",
+        "permanentCity": "",
+        "permanentState": "",
+        "permanentCountry": "",
+        "permanentPostalCode": "",
+        "presentAddressLine1": "",
+        "presentAddressLine2": "",
+        "presentCity": "",
+        "presentState": "",
+        "presentCountry": "",
+        "presentPostalCode": "",
+        "sameAsPermanet": false
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/Application/:appNo"
+      method: PUT
+      params:
+        - name: appNo
+          value: ""
+          type: path
+      body:
+        type: json
+        data: |-
+          {
+            "academicYearId": "",
+            "appNo": "",
+            "name": "",
+            "dob": "",
+            "phone": "",
+            "email": "",
+            "placeOfBirth": "",
+            "gender": "",
+            "nationalityId": "",
+            "karnatakaYn": false,
+            "aadharNo": "",
+            "passportNo": "",
+            "religion": "",
+            "categoryId": "",
+            "caste": "",
+            "annualIncome": 0,
+            "rdNumber": "",
+            "casteRdNumber": "",
+            "apaarId": "",
+            "statsId": "",
+            "fatherName": "",
+            "fatherNo": "",
+            "fatherOccupation": "",
+            "motherName": "",
+            "motherNo": "",
+            "motherOccupation": "",
+            "guardianName": "",
+            "guardianNo": "",
+            "permanentAddressLine1": "",
+            "permanentAddressLine2": "",
+            "permanentCity": "",
+            "permanentState": "",
+            "permanentCountry": "",
+            "permanentPostalCode": "",
+            "presentAddressLine1": "",
+            "presentAddressLine2": "",
+            "presentCity": "",
+            "presentState": "",
+            "presentCountry": "",
+            "presentPostalCode": "",
+            "sameAsPermanet": false
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

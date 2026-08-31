@@ -1,0 +1,30 @@
+info:
+  name: get /api/AcademicYear
+  type: http
+  seq: 2
+  tags:
+    - AcademicYear
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/AcademicYear"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/AcademicYear"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

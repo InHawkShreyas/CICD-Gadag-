@@ -1,0 +1,26 @@
+opencollection: 1.0.0
+
+info:
+  name: UniversitySystem API
+config:
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ""
+      port: ""
+      auth:
+        username: ""
+        password: ""
+      bypassProxy: ""
+
+request:
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFuYW55YSIsInJvbGVJZCI6IjI3NDk3YWM5LWY0NTItNGIzMi1hZDQzLTk0NjgxNTk3ZTgwMyIsImV4cCI6MTc3NzgzODg2MywiaXNzIjoiR2FkYWdVbml2ZXJzaXR5IiwiYXVkIjoiR2FkYWdVbml2ZXJzaXR5VXNlcnMifQ.VX_Uno5ckTr-QTlQ6QVTDtNSwlmyDfefuEcwyaeLOAE
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git

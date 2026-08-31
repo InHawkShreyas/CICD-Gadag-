@@ -1,0 +1,30 @@
+info:
+  name: get /api/Application
+  type: http
+  seq: 2
+  tags:
+    - Application
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/Application"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/Application"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

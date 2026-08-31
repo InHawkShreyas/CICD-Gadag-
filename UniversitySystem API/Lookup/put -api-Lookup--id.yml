@@ -1,0 +1,68 @@
+info:
+  name: put /api/Lookup/:id
+  type: http
+  seq: 3
+  tags:
+    - Lookup
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/api/Lookup/:id"
+  params:
+    - name: id
+      value: ""
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "code": "",
+        "name": "",
+        "description": "",
+        "type": "",
+        "type2": "",
+        "extraInt1": 0,
+        "extraInt2": 0,
+        "startDate": "",
+        "endDate": "",
+        "extraDescription": ""
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/Lookup/:id"
+      method: PUT
+      params:
+        - name: id
+          value: ""
+          type: path
+      body:
+        type: json
+        data: |-
+          {
+            "code": "",
+            "name": "",
+            "description": "",
+            "type": "",
+            "type2": "",
+            "extraInt1": 0,
+            "extraInt2": 0,
+            "startDate": "",
+            "endDate": "",
+            "extraDescription": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

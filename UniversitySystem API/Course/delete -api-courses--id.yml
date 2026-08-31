@@ -1,0 +1,38 @@
+info:
+  name: delete /api/courses/:id
+  type: http
+  seq: 6
+  tags:
+    - Course
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/api/courses/:id"
+  params:
+    - name: id
+      value: ""
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success
+    request:
+      url: "{{baseUrl}}/api/courses/:id"
+      method: DELETE
+      params:
+        - name: id
+          value: ""
+          type: path
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""
