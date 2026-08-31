@@ -1,20 +1,8 @@
-backend/UniversitySystem.Api/obj/Debug/net8.0/UniversitySystem.Api.AssemblyInfo.cs
-backend/UniversitySystem.Api/obj/Debug/net8.0/UniversitySystem.Api.AssemblyInfoInputs.cache
-backend/UniversitySystem.Api/obj/Debug/net8.0/UniversitySystem.Api.csproj.AssemblyReference.cache
-backend/UniversitySystem.Application/obj/Debug/net8.0/UniversitySystem.Application.AssemblyInfo.cs
-backend/UniversitySystem.Application/obj/Debug/net8.0/UniversitySystem.Application.AssemblyInfoInputs.cache
-backend/UniversitySystem.Application/obj/Debug/net8.0/UniversitySystem.Application.csproj.AssemblyReference.cache
-backend/UniversitySystem.Domain/obj/Debug/net8.0/UniversitySystem.Domain.AssemblyInfo.cs
-backend/UniversitySystem.Domain/obj/Debug/net8.0/UniversitySystem.Domain.AssemblyInfoInputs.cache
-backend/UniversitySystem.Infrastructure/obj/Debug/net8.0/UniversitySystem.Infrastructure.AssemblyInfo.cs
-backend/UniversitySystem.Infrastructure/obj/Debug/net8.0/UniversitySystem.Infrastructure.AssemblyInfoInputs.cache
-backend/UniversitySystem.Infrastructure/obj/Debug/net8.0/UniversitySystem.Infrastructure.csproj.AssemblyReference.cache
-/backend/UniversitySystem.Api/Attachments
-backend/UniversitySystem.Api/appsettings.json
+# Local test config - contains real credentials, never commit
+Testing/Config/appsettings.local.json
 
-.obsidian/workspace.json
-.obsidian/cache
-backend/UniversitySystem.Api/appsettings.development.json
-
-.fake
-backend/UniversitySystem.Api/appsettings.development.json
+# Test build outputs
+Testing/bin/
+Testing/obj/
+Testing/test-results/
+Testing/playwright-report/
