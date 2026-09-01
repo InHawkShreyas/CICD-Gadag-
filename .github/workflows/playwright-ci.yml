@@ -20,7 +20,6 @@ env:
   DOTNET_VERSION: '8.0.x'
   TARGET_FRAMEWORK: 'net8.0'
   BUILD_CONFIGURATION: 'Release'
-  PROJECT_PATH: 'Testing/PlaywrightTests.csproj'
   API_PROJECT_PATH: 'backend/UniversitySystem.Api/UniversitySystem.Api.csproj'
   INFRASTRUCTURE_PROJECT_PATH: 'backend/UniversitySystem.Infrastructure/UniversitySystem.Infrastructure.csproj'
 
@@ -41,19 +40,16 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Cache NuGet packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.nuget/packages
-          key: nuget-${{ runner.os }}-${{ hashFiles('Testing/PlaywrightTests.csproj') }}
-          restore-keys: |
-            nuget-${{ runner.os }}-
+      - name: Verify SDK version
+        run: dotnet --version
 
       - name: Restore NuGet packages
-        run: dotnet restore ${{ env.PROJECT_PATH }}
+        working-directory: Testing
+        run: dotnet restore PlaywrightTests.csproj
 
       - name: Build test project
-        run: dotnet build ${{ env.PROJECT_PATH }} --configuration ${{ env.BUILD_CONFIGURATION }} --no-restore
+        working-directory: Testing
+        run: dotnet build PlaywrightTests.csproj --configuration ${{ env.BUILD_CONFIGURATION }} --no-restore
 
   test:
     needs: build
@@ -92,10 +88,8 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Restore and build test project
-        run: |
-          dotnet restore ${{ env.PROJECT_PATH }}
-          dotnet build ${{ env.PROJECT_PATH }} --configuration ${{ env.BUILD_CONFIGURATION }} --no-restore
+      - name: Verify SDK version
+        run: dotnet --version
 
       - name: Restore backend packages
         run: dotnet restore ${{ env.API_PROJECT_PATH }}
@@ -158,20 +152,8 @@ jobs:
             libxcursor1 libxdamage1 libxi6 libxtst6 libpango-1.0-0 \
             libcairo2 libdrm2 libxrandr2 libxfixes3
 
-      - name: Install Playwright browsers
-        run: |
-          pwsh Testing/bin/${{ env.BUILD_CONFIGURATION }}/${{ env.TARGET_FRAMEWORK }}/playwright.ps1 install ${{ matrix.browser }}
-
-      - name: Verify test assembly exists
-        run: |
-          echo "=== Checking test output directory ==="
-          ls -la Testing/bin/Release/net8.0/ || echo "Directory not found"
-          echo "=== Checking for test DLL ==="
-          find Testing -name "PlaywrightTests.dll" 2>/dev/null || echo "DLL not found"
-          echo "=== Checking for runtimeconfig ==="
-          find Testing -name "*.runtimeconfig.json" 2>/dev/null || echo "No runtimeconfig found"
-
       - name: Run Playwright tests
+        working-directory: Testing
         env:
           AUTOMATION_BaseUrl: http://localhost:5173
           AUTOMATION_BackendUrl: http://localhost:5063
@@ -187,13 +169,16 @@ jobs:
           AUTOMATION_Database__Username: postgres
           AUTOMATION_Database__Password: ${{ secrets.DB_PASSWORD }}
         run: |
-          dotnet test ${{ env.PROJECT_PATH }} \
+          dotnet test PlaywrightTests.csproj \
             --configuration ${{ env.BUILD_CONFIGURATION }} \
-            --no-build \
             --logger "trx;LogFileName=${{ matrix.browser }}-test-results.trx" \
-            --results-directory Testing/test-results \
-            --verbosity diagnostic 2>&1 || true
+            --results-directory test-results 2>&1 || true
           echo "Exit code: $?"
+
+      - name: Install Playwright browsers
+        working-directory: Testing
+        run: |
+          pwsh bin/${{ env.BUILD_CONFIGURATION }}/${{ env.TARGET_FRAMEWORK }}/playwright.ps1 install ${{ matrix.browser }}
 
       - name: Publish test results
         if: always()
