@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict c02sQiIarF3EUAZ6pDuXr9Y5neskjlsEnsGwfZf0Zcfc1IFlhK1yWKom9ZXtn3d
+\restrict SyqzoEn8CwWYiY5v4YstD1EBctCMhgGsVKL0l0z9T5tjBz0lLiXwD3R3SAVoPFU
 
 -- Dumped from database version 18.4
 -- Dumped by pg_dump version 18.4
@@ -20,76 +20,60 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: academic; Type: SCHEMA; Schema: -; Owner: postgres
+-- Name: academic; Type: SCHEMA; Schema: -; Owner: -
 --
 
 CREATE SCHEMA academic;
 
 
-ALTER SCHEMA academic OWNER TO postgres;
-
 --
--- Name: admission; Type: SCHEMA; Schema: -; Owner: postgres
+-- Name: admission; Type: SCHEMA; Schema: -; Owner: -
 --
 
 CREATE SCHEMA admission;
 
 
-ALTER SCHEMA admission OWNER TO postgres;
-
 --
--- Name: audit; Type: SCHEMA; Schema: -; Owner: postgres
+-- Name: audit; Type: SCHEMA; Schema: -; Owner: -
 --
 
 CREATE SCHEMA audit;
 
 
-ALTER SCHEMA audit OWNER TO postgres;
-
 --
--- Name: auth; Type: SCHEMA; Schema: -; Owner: postgres
+-- Name: auth; Type: SCHEMA; Schema: -; Owner: -
 --
 
 CREATE SCHEMA auth;
 
 
-ALTER SCHEMA auth OWNER TO postgres;
-
 --
--- Name: examination; Type: SCHEMA; Schema: -; Owner: postgres
+-- Name: examination; Type: SCHEMA; Schema: -; Owner: -
 --
 
 CREATE SCHEMA examination;
 
 
-ALTER SCHEMA examination OWNER TO postgres;
-
 --
--- Name: fees; Type: SCHEMA; Schema: -; Owner: postgres
+-- Name: fees; Type: SCHEMA; Schema: -; Owner: -
 --
 
 CREATE SCHEMA fees;
 
 
-ALTER SCHEMA fees OWNER TO postgres;
-
 --
--- Name: public; Type: SCHEMA; Schema: -; Owner: postgres
+-- Name: public; Type: SCHEMA; Schema: -; Owner: -
 --
 
 -- *not* creating schema, since initdb creates it
 
 
-ALTER SCHEMA public OWNER TO postgres;
-
 --
--- Name: support; Type: SCHEMA; Schema: -; Owner: postgres
+-- Name: support; Type: SCHEMA; Schema: -; Owner: -
 --
 
 CREATE SCHEMA support;
 
-
-ALTER SCHEMA support OWNER TO postgres;
 
 --
 -- Name: pgcrypto; Type: EXTENSION; Schema: -; Owner: -
@@ -99,14 +83,14 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA fees;
 
 
 --
--- Name: EXTENSION pgcrypto; Type: COMMENT; Schema: -; Owner: 
+-- Name: EXTENSION pgcrypto; Type: COMMENT; Schema: -; Owner: -
 --
 
 COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
 
 
 --
--- Name: set_cc_batch_type_id(); Type: FUNCTION; Schema: admission; Owner: postgres
+-- Name: set_cc_batch_type_id(); Type: FUNCTION; Schema: admission; Owner: -
 --
 
 CREATE FUNCTION admission.set_cc_batch_type_id() RETURNS trigger
@@ -135,14 +119,12 @@ END;
 $$;
 
 
-ALTER FUNCTION admission.set_cc_batch_type_id() OWNER TO postgres;
-
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
 --
--- Name: admitted_students; Type: TABLE; Schema: academic; Owner: postgres
+-- Name: admitted_students; Type: TABLE; Schema: academic; Owner: -
 --
 
 CREATE TABLE academic.admitted_students (
@@ -159,10 +141,8 @@ CREATE TABLE academic.admitted_students (
 );
 
 
-ALTER TABLE academic.admitted_students OWNER TO postgres;
-
 --
--- Name: course_subjects; Type: TABLE; Schema: academic; Owner: postgres
+-- Name: course_subjects; Type: TABLE; Schema: academic; Owner: -
 --
 
 CREATE TABLE academic.course_subjects (
@@ -179,10 +159,8 @@ CREATE TABLE academic.course_subjects (
 );
 
 
-ALTER TABLE academic.course_subjects OWNER TO postgres;
-
 --
--- Name: students; Type: TABLE; Schema: academic; Owner: postgres
+-- Name: students; Type: TABLE; Schema: academic; Owner: -
 --
 
 CREATE TABLE academic.students (
@@ -200,10 +178,8 @@ CREATE TABLE academic.students (
 );
 
 
-ALTER TABLE academic.students OWNER TO postgres;
-
 --
--- Name: application_course_details; Type: TABLE; Schema: admission; Owner: postgres
+-- Name: application_course_details; Type: TABLE; Schema: admission; Owner: -
 --
 
 CREATE TABLE admission.application_course_details (
@@ -233,10 +209,8 @@ CREATE TABLE admission.application_course_details (
 );
 
 
-ALTER TABLE admission.application_course_details OWNER TO postgres;
-
 --
--- Name: application_documents; Type: TABLE; Schema: admission; Owner: postgres
+-- Name: application_documents; Type: TABLE; Schema: admission; Owner: -
 --
 
 CREATE TABLE admission.application_documents (
@@ -254,10 +228,8 @@ CREATE TABLE admission.application_documents (
 );
 
 
-ALTER TABLE admission.application_documents OWNER TO postgres;
-
 --
--- Name: application_photo; Type: TABLE; Schema: admission; Owner: postgres
+-- Name: application_photo; Type: TABLE; Schema: admission; Owner: -
 --
 
 CREATE TABLE admission.application_photo (
@@ -275,10 +247,8 @@ CREATE TABLE admission.application_photo (
 );
 
 
-ALTER TABLE admission.application_photo OWNER TO postgres;
-
 --
--- Name: application_verification; Type: TABLE; Schema: admission; Owner: postgres
+-- Name: application_verification; Type: TABLE; Schema: admission; Owner: -
 --
 
 CREATE TABLE admission.application_verification (
@@ -298,10 +268,8 @@ CREATE TABLE admission.application_verification (
 );
 
 
-ALTER TABLE admission.application_verification OWNER TO postgres;
-
 --
--- Name: applications; Type: TABLE; Schema: admission; Owner: postgres
+-- Name: applications; Type: TABLE; Schema: admission; Owner: -
 --
 
 CREATE TABLE admission.applications (
@@ -347,10 +315,8 @@ CREATE TABLE admission.applications (
 );
 
 
-ALTER TABLE admission.applications OWNER TO postgres;
-
 --
--- Name: education_details; Type: TABLE; Schema: admission; Owner: postgres
+-- Name: education_details; Type: TABLE; Schema: admission; Owner: -
 --
 
 CREATE TABLE admission.education_details (
@@ -372,10 +338,8 @@ CREATE TABLE admission.education_details (
 );
 
 
-ALTER TABLE admission.education_details OWNER TO postgres;
-
 --
--- Name: pg_education_details; Type: TABLE; Schema: admission; Owner: postgres
+-- Name: pg_education_details; Type: TABLE; Schema: admission; Owner: -
 --
 
 CREATE TABLE admission.pg_education_details (
@@ -402,10 +366,8 @@ CREATE TABLE admission.pg_education_details (
 );
 
 
-ALTER TABLE admission.pg_education_details OWNER TO postgres;
-
 --
--- Name: pg_education_period; Type: TABLE; Schema: admission; Owner: postgres
+-- Name: pg_education_period; Type: TABLE; Schema: admission; Owner: -
 --
 
 CREATE TABLE admission.pg_education_period (
@@ -428,10 +390,8 @@ CREATE TABLE admission.pg_education_period (
 );
 
 
-ALTER TABLE admission.pg_education_period OWNER TO postgres;
-
 --
--- Name: seat_type; Type: TABLE; Schema: admission; Owner: postgres
+-- Name: seat_type; Type: TABLE; Schema: admission; Owner: -
 --
 
 CREATE TABLE admission.seat_type (
@@ -448,10 +408,8 @@ CREATE TABLE admission.seat_type (
 );
 
 
-ALTER TABLE admission.seat_type OWNER TO postgres;
-
 --
--- Name: audit_logs; Type: TABLE; Schema: audit; Owner: postgres
+-- Name: audit_logs; Type: TABLE; Schema: audit; Owner: -
 --
 
 CREATE TABLE audit.audit_logs (
@@ -467,10 +425,8 @@ CREATE TABLE audit.audit_logs (
 );
 
 
-ALTER TABLE audit.audit_logs OWNER TO postgres;
-
 --
--- Name: customer_support; Type: TABLE; Schema: audit; Owner: postgres
+-- Name: customer_support; Type: TABLE; Schema: audit; Owner: -
 --
 
 CREATE TABLE audit.customer_support (
@@ -489,10 +445,8 @@ CREATE TABLE audit.customer_support (
 );
 
 
-ALTER TABLE audit.customer_support OWNER TO postgres;
-
 --
--- Name: document_coordinator_mapping; Type: TABLE; Schema: auth; Owner: postgres
+-- Name: document_coordinator_mapping; Type: TABLE; Schema: auth; Owner: -
 --
 
 CREATE TABLE auth.document_coordinator_mapping (
@@ -509,10 +463,8 @@ CREATE TABLE auth.document_coordinator_mapping (
 );
 
 
-ALTER TABLE auth.document_coordinator_mapping OWNER TO postgres;
-
 --
--- Name: login; Type: TABLE; Schema: auth; Owner: postgres
+-- Name: login; Type: TABLE; Schema: auth; Owner: -
 --
 
 CREATE TABLE auth.login (
@@ -531,10 +483,8 @@ CREATE TABLE auth.login (
 );
 
 
-ALTER TABLE auth.login OWNER TO postgres;
-
 --
--- Name: otp_logs; Type: TABLE; Schema: auth; Owner: postgres
+-- Name: otp_logs; Type: TABLE; Schema: auth; Owner: -
 --
 
 CREATE TABLE auth.otp_logs (
@@ -549,10 +499,8 @@ CREATE TABLE auth.otp_logs (
 );
 
 
-ALTER TABLE auth.otp_logs OWNER TO postgres;
-
 --
--- Name: registration; Type: TABLE; Schema: auth; Owner: postgres
+-- Name: registration; Type: TABLE; Schema: auth; Owner: -
 --
 
 CREATE TABLE auth.registration (
@@ -576,10 +524,8 @@ CREATE TABLE auth.registration (
 );
 
 
-ALTER TABLE auth.registration OWNER TO postgres;
-
 --
--- Name: exam_application; Type: TABLE; Schema: examination; Owner: postgres
+-- Name: exam_application; Type: TABLE; Schema: examination; Owner: -
 --
 
 CREATE TABLE examination.exam_application (
@@ -605,10 +551,8 @@ CREATE TABLE examination.exam_application (
 );
 
 
-ALTER TABLE examination.exam_application OWNER TO postgres;
-
 --
--- Name: exam_application_details; Type: TABLE; Schema: examination; Owner: postgres
+-- Name: exam_application_details; Type: TABLE; Schema: examination; Owner: -
 --
 
 CREATE TABLE examination.exam_application_details (
@@ -627,10 +571,8 @@ CREATE TABLE examination.exam_application_details (
 );
 
 
-ALTER TABLE examination.exam_application_details OWNER TO postgres;
-
 --
--- Name: admission_fee_conditional_charge; Type: TABLE; Schema: fees; Owner: postgres
+-- Name: admission_fee_conditional_charge; Type: TABLE; Schema: fees; Owner: -
 --
 
 CREATE TABLE fees.admission_fee_conditional_charge (
@@ -648,10 +590,8 @@ CREATE TABLE fees.admission_fee_conditional_charge (
 );
 
 
-ALTER TABLE fees.admission_fee_conditional_charge OWNER TO postgres;
-
 --
--- Name: admission_fee_structure; Type: TABLE; Schema: fees; Owner: postgres
+-- Name: admission_fee_structure; Type: TABLE; Schema: fees; Owner: -
 --
 
 CREATE TABLE fees.admission_fee_structure (
@@ -680,10 +620,8 @@ CREATE TABLE fees.admission_fee_structure (
 );
 
 
-ALTER TABLE fees.admission_fee_structure OWNER TO postgres;
-
 --
--- Name: admission_fee_structure_details; Type: TABLE; Schema: fees; Owner: postgres
+-- Name: admission_fee_structure_details; Type: TABLE; Schema: fees; Owner: -
 --
 
 CREATE TABLE fees.admission_fee_structure_details (
@@ -703,10 +641,8 @@ CREATE TABLE fees.admission_fee_structure_details (
 );
 
 
-ALTER TABLE fees.admission_fee_structure_details OWNER TO postgres;
-
 --
--- Name: application_fee; Type: TABLE; Schema: fees; Owner: postgres
+-- Name: application_fee; Type: TABLE; Schema: fees; Owner: -
 --
 
 CREATE TABLE fees.application_fee (
@@ -730,10 +666,8 @@ CREATE TABLE fees.application_fee (
 );
 
 
-ALTER TABLE fees.application_fee OWNER TO postgres;
-
 --
--- Name: exam_fee; Type: TABLE; Schema: fees; Owner: postgres
+-- Name: exam_fee; Type: TABLE; Schema: fees; Owner: -
 --
 
 CREATE TABLE fees.exam_fee (
@@ -756,10 +690,8 @@ CREATE TABLE fees.exam_fee (
 );
 
 
-ALTER TABLE fees.exam_fee OWNER TO postgres;
-
 --
--- Name: fee_collection_manual; Type: TABLE; Schema: fees; Owner: postgres
+-- Name: fee_collection_manual; Type: TABLE; Schema: fees; Owner: -
 --
 
 CREATE TABLE fees.fee_collection_manual (
@@ -783,10 +715,8 @@ CREATE TABLE fees.fee_collection_manual (
 );
 
 
-ALTER TABLE fees.fee_collection_manual OWNER TO postgres;
-
 --
--- Name: fee_collection_manual_details; Type: TABLE; Schema: fees; Owner: postgres
+-- Name: fee_collection_manual_details; Type: TABLE; Schema: fees; Owner: -
 --
 
 CREATE TABLE fees.fee_collection_manual_details (
@@ -802,10 +732,8 @@ CREATE TABLE fees.fee_collection_manual_details (
 );
 
 
-ALTER TABLE fees.fee_collection_manual_details OWNER TO postgres;
-
 --
--- Name: fee_collections; Type: TABLE; Schema: fees; Owner: postgres
+-- Name: fee_collections; Type: TABLE; Schema: fees; Owner: -
 --
 
 CREATE TABLE fees.fee_collections (
@@ -837,10 +765,8 @@ CREATE TABLE fees.fee_collections (
 );
 
 
-ALTER TABLE fees.fee_collections OWNER TO postgres;
-
 --
--- Name: academic_dates; Type: TABLE; Schema: public; Owner: postgres
+-- Name: academic_dates; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.academic_dates (
@@ -857,10 +783,8 @@ CREATE TABLE public.academic_dates (
 );
 
 
-ALTER TABLE public.academic_dates OWNER TO postgres;
-
 --
--- Name: academic_year; Type: TABLE; Schema: public; Owner: postgres
+-- Name: academic_year; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.academic_year (
@@ -877,10 +801,8 @@ CREATE TABLE public.academic_year (
 );
 
 
-ALTER TABLE public.academic_year OWNER TO postgres;
-
 --
--- Name: courses; Type: TABLE; Schema: public; Owner: postgres
+-- Name: courses; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.courses (
@@ -897,10 +819,8 @@ CREATE TABLE public.courses (
 );
 
 
-ALTER TABLE public.courses OWNER TO postgres;
-
 --
--- Name: degrees; Type: TABLE; Schema: public; Owner: postgres
+-- Name: degrees; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.degrees (
@@ -918,10 +838,8 @@ CREATE TABLE public.degrees (
 );
 
 
-ALTER TABLE public.degrees OWNER TO postgres;
-
 --
--- Name: lookup; Type: TABLE; Schema: public; Owner: postgres
+-- Name: lookup; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.lookup (
@@ -945,10 +863,8 @@ CREATE TABLE public.lookup (
 );
 
 
-ALTER TABLE public.lookup OWNER TO postgres;
-
 --
--- Name: lookup_debug_no_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: lookup_debug_no_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.lookup_debug_no_seq
@@ -960,17 +876,15 @@ CREATE SEQUENCE public.lookup_debug_no_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.lookup_debug_no_seq OWNER TO postgres;
-
 --
--- Name: lookup_debug_no_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: lookup_debug_no_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.lookup_debug_no_seq OWNED BY public.lookup.debug_no;
 
 
 --
--- Name: notifications; Type: TABLE; Schema: public; Owner: postgres
+-- Name: notifications; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.notifications (
@@ -988,10 +902,8 @@ CREATE TABLE public.notifications (
 );
 
 
-ALTER TABLE public.notifications OWNER TO postgres;
-
 --
--- Name: receipt_sequence; Type: TABLE; Schema: public; Owner: postgres
+-- Name: receipt_sequence; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.receipt_sequence (
@@ -1007,10 +919,8 @@ CREATE TABLE public.receipt_sequence (
 );
 
 
-ALTER TABLE public.receipt_sequence OWNER TO postgres;
-
 --
--- Name: subjects; Type: TABLE; Schema: public; Owner: postgres
+-- Name: subjects; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.subjects (
@@ -1028,10 +938,8 @@ CREATE TABLE public.subjects (
 );
 
 
-ALTER TABLE public.subjects OWNER TO postgres;
-
 --
--- Name: universities; Type: TABLE; Schema: public; Owner: postgres
+-- Name: universities; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.universities (
@@ -1048,10 +956,8 @@ CREATE TABLE public.universities (
 );
 
 
-ALTER TABLE public.universities OWNER TO postgres;
-
 --
--- Name: faqs; Type: TABLE; Schema: support; Owner: postgres
+-- Name: faqs; Type: TABLE; Schema: support; Owner: -
 --
 
 CREATE TABLE support.faqs (
@@ -1067,10 +973,8 @@ CREATE TABLE support.faqs (
 );
 
 
-ALTER TABLE support.faqs OWNER TO postgres;
-
 --
--- Name: support_ticket_messages; Type: TABLE; Schema: support; Owner: postgres
+-- Name: support_ticket_messages; Type: TABLE; Schema: support; Owner: -
 --
 
 CREATE TABLE support.support_ticket_messages (
@@ -1087,10 +991,8 @@ CREATE TABLE support.support_ticket_messages (
 );
 
 
-ALTER TABLE support.support_ticket_messages OWNER TO postgres;
-
 --
--- Name: support_tickets; Type: TABLE; Schema: support; Owner: postgres
+-- Name: support_tickets; Type: TABLE; Schema: support; Owner: -
 --
 
 CREATE TABLE support.support_tickets (
@@ -1108,17 +1010,15 @@ CREATE TABLE support.support_tickets (
 );
 
 
-ALTER TABLE support.support_tickets OWNER TO postgres;
-
 --
--- Name: lookup debug_no; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: lookup debug_no; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.lookup ALTER COLUMN debug_no SET DEFAULT nextval('public.lookup_debug_no_seq'::regclass);
 
 
 --
--- Name: admitted_students admitted_students_pkey; Type: CONSTRAINT; Schema: academic; Owner: postgres
+-- Name: admitted_students admitted_students_pkey; Type: CONSTRAINT; Schema: academic; Owner: -
 --
 
 ALTER TABLE ONLY academic.admitted_students
@@ -1126,7 +1026,7 @@ ALTER TABLE ONLY academic.admitted_students
 
 
 --
--- Name: course_subjects course_subjects_pkey; Type: CONSTRAINT; Schema: academic; Owner: postgres
+-- Name: course_subjects course_subjects_pkey; Type: CONSTRAINT; Schema: academic; Owner: -
 --
 
 ALTER TABLE ONLY academic.course_subjects
@@ -1134,7 +1034,7 @@ ALTER TABLE ONLY academic.course_subjects
 
 
 --
--- Name: students students_pkey; Type: CONSTRAINT; Schema: academic; Owner: postgres
+-- Name: students students_pkey; Type: CONSTRAINT; Schema: academic; Owner: -
 --
 
 ALTER TABLE ONLY academic.students
@@ -1142,7 +1042,7 @@ ALTER TABLE ONLY academic.students
 
 
 --
--- Name: students students_registration_number_key; Type: CONSTRAINT; Schema: academic; Owner: postgres
+-- Name: students students_registration_number_key; Type: CONSTRAINT; Schema: academic; Owner: -
 --
 
 ALTER TABLE ONLY academic.students
@@ -1150,7 +1050,7 @@ ALTER TABLE ONLY academic.students
 
 
 --
--- Name: course_subjects uq_course_subjects; Type: CONSTRAINT; Schema: academic; Owner: postgres
+-- Name: course_subjects uq_course_subjects; Type: CONSTRAINT; Schema: academic; Owner: -
 --
 
 ALTER TABLE ONLY academic.course_subjects
@@ -1158,7 +1058,7 @@ ALTER TABLE ONLY academic.course_subjects
 
 
 --
--- Name: application_course_details application_course_details_pkey; Type: CONSTRAINT; Schema: admission; Owner: postgres
+-- Name: application_course_details application_course_details_pkey; Type: CONSTRAINT; Schema: admission; Owner: -
 --
 
 ALTER TABLE ONLY admission.application_course_details
@@ -1166,7 +1066,7 @@ ALTER TABLE ONLY admission.application_course_details
 
 
 --
--- Name: application_documents application_documents_pkey; Type: CONSTRAINT; Schema: admission; Owner: postgres
+-- Name: application_documents application_documents_pkey; Type: CONSTRAINT; Schema: admission; Owner: -
 --
 
 ALTER TABLE ONLY admission.application_documents
@@ -1174,7 +1074,7 @@ ALTER TABLE ONLY admission.application_documents
 
 
 --
--- Name: application_photo application_photo_pkey; Type: CONSTRAINT; Schema: admission; Owner: postgres
+-- Name: application_photo application_photo_pkey; Type: CONSTRAINT; Schema: admission; Owner: -
 --
 
 ALTER TABLE ONLY admission.application_photo
@@ -1182,7 +1082,7 @@ ALTER TABLE ONLY admission.application_photo
 
 
 --
--- Name: application_verification application_verification_pkey; Type: CONSTRAINT; Schema: admission; Owner: postgres
+-- Name: application_verification application_verification_pkey; Type: CONSTRAINT; Schema: admission; Owner: -
 --
 
 ALTER TABLE ONLY admission.application_verification
@@ -1190,7 +1090,7 @@ ALTER TABLE ONLY admission.application_verification
 
 
 --
--- Name: applications applications_app_no_key; Type: CONSTRAINT; Schema: admission; Owner: postgres
+-- Name: applications applications_app_no_key; Type: CONSTRAINT; Schema: admission; Owner: -
 --
 
 ALTER TABLE ONLY admission.applications
@@ -1198,7 +1098,7 @@ ALTER TABLE ONLY admission.applications
 
 
 --
--- Name: applications applications_pkey; Type: CONSTRAINT; Schema: admission; Owner: postgres
+-- Name: applications applications_pkey; Type: CONSTRAINT; Schema: admission; Owner: -
 --
 
 ALTER TABLE ONLY admission.applications
@@ -1206,7 +1106,7 @@ ALTER TABLE ONLY admission.applications
 
 
 --
--- Name: education_details education_details_pkey; Type: CONSTRAINT; Schema: admission; Owner: postgres
+-- Name: education_details education_details_pkey; Type: CONSTRAINT; Schema: admission; Owner: -
 --
 
 ALTER TABLE ONLY admission.education_details
@@ -1214,7 +1114,7 @@ ALTER TABLE ONLY admission.education_details
 
 
 --
--- Name: pg_education_details pg_education_details_pkey; Type: CONSTRAINT; Schema: admission; Owner: postgres
+-- Name: pg_education_details pg_education_details_pkey; Type: CONSTRAINT; Schema: admission; Owner: -
 --
 
 ALTER TABLE ONLY admission.pg_education_details
@@ -1222,7 +1122,7 @@ ALTER TABLE ONLY admission.pg_education_details
 
 
 --
--- Name: pg_education_period pg_education_period_pkey; Type: CONSTRAINT; Schema: admission; Owner: postgres
+-- Name: pg_education_period pg_education_period_pkey; Type: CONSTRAINT; Schema: admission; Owner: -
 --
 
 ALTER TABLE ONLY admission.pg_education_period
@@ -1230,7 +1130,7 @@ ALTER TABLE ONLY admission.pg_education_period
 
 
 --
--- Name: seat_type seat_type_pkey; Type: CONSTRAINT; Schema: admission; Owner: postgres
+-- Name: seat_type seat_type_pkey; Type: CONSTRAINT; Schema: admission; Owner: -
 --
 
 ALTER TABLE ONLY admission.seat_type
@@ -1238,7 +1138,7 @@ ALTER TABLE ONLY admission.seat_type
 
 
 --
--- Name: audit_logs audit_logs_pkey; Type: CONSTRAINT; Schema: audit; Owner: postgres
+-- Name: audit_logs audit_logs_pkey; Type: CONSTRAINT; Schema: audit; Owner: -
 --
 
 ALTER TABLE ONLY audit.audit_logs
@@ -1246,7 +1146,7 @@ ALTER TABLE ONLY audit.audit_logs
 
 
 --
--- Name: customer_support customer_support_pkey; Type: CONSTRAINT; Schema: audit; Owner: postgres
+-- Name: customer_support customer_support_pkey; Type: CONSTRAINT; Schema: audit; Owner: -
 --
 
 ALTER TABLE ONLY audit.customer_support
@@ -1254,7 +1154,7 @@ ALTER TABLE ONLY audit.customer_support
 
 
 --
--- Name: customer_support customer_support_ticket_id_key; Type: CONSTRAINT; Schema: audit; Owner: postgres
+-- Name: customer_support customer_support_ticket_id_key; Type: CONSTRAINT; Schema: audit; Owner: -
 --
 
 ALTER TABLE ONLY audit.customer_support
@@ -1262,7 +1162,7 @@ ALTER TABLE ONLY audit.customer_support
 
 
 --
--- Name: document_coordinator_mapping document_coordinator_mapping_pkey; Type: CONSTRAINT; Schema: auth; Owner: postgres
+-- Name: document_coordinator_mapping document_coordinator_mapping_pkey; Type: CONSTRAINT; Schema: auth; Owner: -
 --
 
 ALTER TABLE ONLY auth.document_coordinator_mapping
@@ -1270,7 +1170,7 @@ ALTER TABLE ONLY auth.document_coordinator_mapping
 
 
 --
--- Name: login login_pkey; Type: CONSTRAINT; Schema: auth; Owner: postgres
+-- Name: login login_pkey; Type: CONSTRAINT; Schema: auth; Owner: -
 --
 
 ALTER TABLE ONLY auth.login
@@ -1278,7 +1178,7 @@ ALTER TABLE ONLY auth.login
 
 
 --
--- Name: login login_username_key; Type: CONSTRAINT; Schema: auth; Owner: postgres
+-- Name: login login_username_key; Type: CONSTRAINT; Schema: auth; Owner: -
 --
 
 ALTER TABLE ONLY auth.login
@@ -1286,7 +1186,7 @@ ALTER TABLE ONLY auth.login
 
 
 --
--- Name: otp_logs otp_logs_pkey; Type: CONSTRAINT; Schema: auth; Owner: postgres
+-- Name: otp_logs otp_logs_pkey; Type: CONSTRAINT; Schema: auth; Owner: -
 --
 
 ALTER TABLE ONLY auth.otp_logs
@@ -1294,7 +1194,7 @@ ALTER TABLE ONLY auth.otp_logs
 
 
 --
--- Name: registration registration_pkey; Type: CONSTRAINT; Schema: auth; Owner: postgres
+-- Name: registration registration_pkey; Type: CONSTRAINT; Schema: auth; Owner: -
 --
 
 ALTER TABLE ONLY auth.registration
@@ -1302,7 +1202,7 @@ ALTER TABLE ONLY auth.registration
 
 
 --
--- Name: registration registration_username_key; Type: CONSTRAINT; Schema: auth; Owner: postgres
+-- Name: registration registration_username_key; Type: CONSTRAINT; Schema: auth; Owner: -
 --
 
 ALTER TABLE ONLY auth.registration
@@ -1310,7 +1210,7 @@ ALTER TABLE ONLY auth.registration
 
 
 --
--- Name: document_coordinator_mapping uq_document_coordinator_mapping; Type: CONSTRAINT; Schema: auth; Owner: postgres
+-- Name: document_coordinator_mapping uq_document_coordinator_mapping; Type: CONSTRAINT; Schema: auth; Owner: -
 --
 
 ALTER TABLE ONLY auth.document_coordinator_mapping
@@ -1318,7 +1218,7 @@ ALTER TABLE ONLY auth.document_coordinator_mapping
 
 
 --
--- Name: exam_application exam_application_application_no_key; Type: CONSTRAINT; Schema: examination; Owner: postgres
+-- Name: exam_application exam_application_application_no_key; Type: CONSTRAINT; Schema: examination; Owner: -
 --
 
 ALTER TABLE ONLY examination.exam_application
@@ -1326,7 +1226,7 @@ ALTER TABLE ONLY examination.exam_application
 
 
 --
--- Name: exam_application_details exam_application_details_pkey; Type: CONSTRAINT; Schema: examination; Owner: postgres
+-- Name: exam_application_details exam_application_details_pkey; Type: CONSTRAINT; Schema: examination; Owner: -
 --
 
 ALTER TABLE ONLY examination.exam_application_details
@@ -1334,7 +1234,7 @@ ALTER TABLE ONLY examination.exam_application_details
 
 
 --
--- Name: exam_application exam_application_pkey; Type: CONSTRAINT; Schema: examination; Owner: postgres
+-- Name: exam_application exam_application_pkey; Type: CONSTRAINT; Schema: examination; Owner: -
 --
 
 ALTER TABLE ONLY examination.exam_application
@@ -1342,7 +1242,7 @@ ALTER TABLE ONLY examination.exam_application
 
 
 --
--- Name: exam_application_details uq_exam_application_subject; Type: CONSTRAINT; Schema: examination; Owner: postgres
+-- Name: exam_application_details uq_exam_application_subject; Type: CONSTRAINT; Schema: examination; Owner: -
 --
 
 ALTER TABLE ONLY examination.exam_application_details
@@ -1350,7 +1250,7 @@ ALTER TABLE ONLY examination.exam_application_details
 
 
 --
--- Name: admission_fee_conditional_charge admission_fee_conditional_charge_pkey; Type: CONSTRAINT; Schema: fees; Owner: postgres
+-- Name: admission_fee_conditional_charge admission_fee_conditional_charge_pkey; Type: CONSTRAINT; Schema: fees; Owner: -
 --
 
 ALTER TABLE ONLY fees.admission_fee_conditional_charge
@@ -1358,7 +1258,7 @@ ALTER TABLE ONLY fees.admission_fee_conditional_charge
 
 
 --
--- Name: admission_fee_structure_details admission_fee_structure_details_pkey; Type: CONSTRAINT; Schema: fees; Owner: postgres
+-- Name: admission_fee_structure_details admission_fee_structure_details_pkey; Type: CONSTRAINT; Schema: fees; Owner: -
 --
 
 ALTER TABLE ONLY fees.admission_fee_structure_details
@@ -1366,7 +1266,7 @@ ALTER TABLE ONLY fees.admission_fee_structure_details
 
 
 --
--- Name: admission_fee_structure admission_fee_structure_pkey; Type: CONSTRAINT; Schema: fees; Owner: postgres
+-- Name: admission_fee_structure admission_fee_structure_pkey; Type: CONSTRAINT; Schema: fees; Owner: -
 --
 
 ALTER TABLE ONLY fees.admission_fee_structure
@@ -1374,7 +1274,7 @@ ALTER TABLE ONLY fees.admission_fee_structure
 
 
 --
--- Name: application_fee application_fee_pkey; Type: CONSTRAINT; Schema: fees; Owner: postgres
+-- Name: application_fee application_fee_pkey; Type: CONSTRAINT; Schema: fees; Owner: -
 --
 
 ALTER TABLE ONLY fees.application_fee
@@ -1382,7 +1282,7 @@ ALTER TABLE ONLY fees.application_fee
 
 
 --
--- Name: exam_fee exam_fee_pkey; Type: CONSTRAINT; Schema: fees; Owner: postgres
+-- Name: exam_fee exam_fee_pkey; Type: CONSTRAINT; Schema: fees; Owner: -
 --
 
 ALTER TABLE ONLY fees.exam_fee
@@ -1390,7 +1290,7 @@ ALTER TABLE ONLY fees.exam_fee
 
 
 --
--- Name: fee_collection_manual_details fee_collection_manual_details_pkey; Type: CONSTRAINT; Schema: fees; Owner: postgres
+-- Name: fee_collection_manual_details fee_collection_manual_details_pkey; Type: CONSTRAINT; Schema: fees; Owner: -
 --
 
 ALTER TABLE ONLY fees.fee_collection_manual_details
@@ -1398,7 +1298,7 @@ ALTER TABLE ONLY fees.fee_collection_manual_details
 
 
 --
--- Name: fee_collection_manual fee_collection_manual_pkey; Type: CONSTRAINT; Schema: fees; Owner: postgres
+-- Name: fee_collection_manual fee_collection_manual_pkey; Type: CONSTRAINT; Schema: fees; Owner: -
 --
 
 ALTER TABLE ONLY fees.fee_collection_manual
@@ -1406,7 +1306,7 @@ ALTER TABLE ONLY fees.fee_collection_manual
 
 
 --
--- Name: fee_collection_manual fee_collection_manual_receipt_no_key; Type: CONSTRAINT; Schema: fees; Owner: postgres
+-- Name: fee_collection_manual fee_collection_manual_receipt_no_key; Type: CONSTRAINT; Schema: fees; Owner: -
 --
 
 ALTER TABLE ONLY fees.fee_collection_manual
@@ -1414,7 +1314,7 @@ ALTER TABLE ONLY fees.fee_collection_manual
 
 
 --
--- Name: fee_collections fee_collections_pkey; Type: CONSTRAINT; Schema: fees; Owner: postgres
+-- Name: fee_collections fee_collections_pkey; Type: CONSTRAINT; Schema: fees; Owner: -
 --
 
 ALTER TABLE ONLY fees.fee_collections
@@ -1422,7 +1322,7 @@ ALTER TABLE ONLY fees.fee_collections
 
 
 --
--- Name: academic_dates academic_dates_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: academic_dates academic_dates_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.academic_dates
@@ -1430,7 +1330,7 @@ ALTER TABLE ONLY public.academic_dates
 
 
 --
--- Name: academic_year academic_year_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: academic_year academic_year_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.academic_year
@@ -1438,7 +1338,7 @@ ALTER TABLE ONLY public.academic_year
 
 
 --
--- Name: courses courses_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: courses courses_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.courses
@@ -1446,7 +1346,7 @@ ALTER TABLE ONLY public.courses
 
 
 --
--- Name: degrees degrees_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: degrees degrees_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.degrees
@@ -1454,7 +1354,7 @@ ALTER TABLE ONLY public.degrees
 
 
 --
--- Name: lookup lookup_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: lookup lookup_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.lookup
@@ -1462,7 +1362,7 @@ ALTER TABLE ONLY public.lookup
 
 
 --
--- Name: notifications notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: notifications notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.notifications
@@ -1470,7 +1370,7 @@ ALTER TABLE ONLY public.notifications
 
 
 --
--- Name: receipt_sequence receipt_sequence_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: receipt_sequence receipt_sequence_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.receipt_sequence
@@ -1478,7 +1378,7 @@ ALTER TABLE ONLY public.receipt_sequence
 
 
 --
--- Name: subjects subjects_code_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: subjects subjects_code_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.subjects
@@ -1486,7 +1386,7 @@ ALTER TABLE ONLY public.subjects
 
 
 --
--- Name: subjects subjects_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: subjects subjects_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.subjects
@@ -1494,7 +1394,7 @@ ALTER TABLE ONLY public.subjects
 
 
 --
--- Name: universities universities_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: universities universities_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.universities
@@ -1502,7 +1402,7 @@ ALTER TABLE ONLY public.universities
 
 
 --
--- Name: faqs faqs_pkey; Type: CONSTRAINT; Schema: support; Owner: postgres
+-- Name: faqs faqs_pkey; Type: CONSTRAINT; Schema: support; Owner: -
 --
 
 ALTER TABLE ONLY support.faqs
@@ -1510,7 +1410,7 @@ ALTER TABLE ONLY support.faqs
 
 
 --
--- Name: support_ticket_messages support_ticket_messages_pkey; Type: CONSTRAINT; Schema: support; Owner: postgres
+-- Name: support_ticket_messages support_ticket_messages_pkey; Type: CONSTRAINT; Schema: support; Owner: -
 --
 
 ALTER TABLE ONLY support.support_ticket_messages
@@ -1518,7 +1418,7 @@ ALTER TABLE ONLY support.support_ticket_messages
 
 
 --
--- Name: support_tickets support_tickets_pkey; Type: CONSTRAINT; Schema: support; Owner: postgres
+-- Name: support_tickets support_tickets_pkey; Type: CONSTRAINT; Schema: support; Owner: -
 --
 
 ALTER TABLE ONLY support.support_tickets
@@ -1526,7 +1426,7 @@ ALTER TABLE ONLY support.support_tickets
 
 
 --
--- Name: support_tickets support_tickets_ticket_no_key; Type: CONSTRAINT; Schema: support; Owner: postgres
+-- Name: support_tickets support_tickets_ticket_no_key; Type: CONSTRAINT; Schema: support; Owner: -
 --
 
 ALTER TABLE ONLY support.support_tickets
@@ -1534,98 +1434,98 @@ ALTER TABLE ONLY support.support_tickets
 
 
 --
--- Name: idx_document_coordinator_mapping_course; Type: INDEX; Schema: auth; Owner: postgres
+-- Name: idx_document_coordinator_mapping_course; Type: INDEX; Schema: auth; Owner: -
 --
 
 CREATE INDEX idx_document_coordinator_mapping_course ON auth.document_coordinator_mapping USING btree (course_id);
 
 
 --
--- Name: idx_document_coordinator_mapping_degree; Type: INDEX; Schema: auth; Owner: postgres
+-- Name: idx_document_coordinator_mapping_degree; Type: INDEX; Schema: auth; Owner: -
 --
 
 CREATE INDEX idx_document_coordinator_mapping_degree ON auth.document_coordinator_mapping USING btree (degree_id);
 
 
 --
--- Name: idx_document_coordinator_mapping_login; Type: INDEX; Schema: auth; Owner: postgres
+-- Name: idx_document_coordinator_mapping_login; Type: INDEX; Schema: auth; Owner: -
 --
 
 CREATE INDEX idx_document_coordinator_mapping_login ON auth.document_coordinator_mapping USING btree (login_id);
 
 
 --
--- Name: idx_exam_application_academic_year; Type: INDEX; Schema: examination; Owner: postgres
+-- Name: idx_exam_application_academic_year; Type: INDEX; Schema: examination; Owner: -
 --
 
 CREATE INDEX idx_exam_application_academic_year ON examination.exam_application USING btree (academic_year_id);
 
 
 --
--- Name: idx_exam_application_sem; Type: INDEX; Schema: examination; Owner: postgres
+-- Name: idx_exam_application_sem; Type: INDEX; Schema: examination; Owner: -
 --
 
 CREATE INDEX idx_exam_application_sem ON examination.exam_application USING btree (sem_id);
 
 
 --
--- Name: idx_admission_fee_conditional_charge_condition_id; Type: INDEX; Schema: fees; Owner: postgres
+-- Name: idx_admission_fee_conditional_charge_condition_id; Type: INDEX; Schema: fees; Owner: -
 --
 
 CREATE INDEX idx_admission_fee_conditional_charge_condition_id ON fees.admission_fee_conditional_charge USING btree (condition_id) WHERE (status = true);
 
 
 --
--- Name: idx_faqs_category; Type: INDEX; Schema: support; Owner: postgres
+-- Name: idx_faqs_category; Type: INDEX; Schema: support; Owner: -
 --
 
 CREATE INDEX idx_faqs_category ON support.faqs USING btree (category);
 
 
 --
--- Name: idx_faqs_status; Type: INDEX; Schema: support; Owner: postgres
+-- Name: idx_faqs_status; Type: INDEX; Schema: support; Owner: -
 --
 
 CREATE INDEX idx_faqs_status ON support.faqs USING btree (status);
 
 
 --
--- Name: idx_support_tickets_issue_id; Type: INDEX; Schema: support; Owner: postgres
+-- Name: idx_support_tickets_issue_id; Type: INDEX; Schema: support; Owner: -
 --
 
 CREATE INDEX idx_support_tickets_issue_id ON support.support_tickets USING btree (issue_id);
 
 
 --
--- Name: idx_support_tickets_status_id; Type: INDEX; Schema: support; Owner: postgres
+-- Name: idx_support_tickets_status_id; Type: INDEX; Schema: support; Owner: -
 --
 
 CREATE INDEX idx_support_tickets_status_id ON support.support_tickets USING btree (status_id);
 
 
 --
--- Name: idx_support_tickets_username; Type: INDEX; Schema: support; Owner: postgres
+-- Name: idx_support_tickets_username; Type: INDEX; Schema: support; Owner: -
 --
 
 CREATE INDEX idx_support_tickets_username ON support.support_tickets USING btree (username);
 
 
 --
--- Name: idx_ticket_messages_ticket; Type: INDEX; Schema: support; Owner: postgres
+-- Name: idx_ticket_messages_ticket; Type: INDEX; Schema: support; Owner: -
 --
 
 CREATE INDEX idx_ticket_messages_ticket ON support.support_ticket_messages USING btree (ticket_id, insert_on);
 
 
 --
--- Name: application_course_details trg_set_cc_batch_type_id; Type: TRIGGER; Schema: admission; Owner: postgres
+-- Name: application_course_details trg_set_cc_batch_type_id; Type: TRIGGER; Schema: admission; Owner: -
 --
 
 CREATE TRIGGER trg_set_cc_batch_type_id BEFORE INSERT ON admission.application_course_details FOR EACH ROW EXECUTE FUNCTION admission.set_cc_batch_type_id();
 
 
 --
--- Name: course_subjects fk_course_subjects_course; Type: FK CONSTRAINT; Schema: academic; Owner: postgres
+-- Name: course_subjects fk_course_subjects_course; Type: FK CONSTRAINT; Schema: academic; Owner: -
 --
 
 ALTER TABLE ONLY academic.course_subjects
@@ -1633,7 +1533,7 @@ ALTER TABLE ONLY academic.course_subjects
 
 
 --
--- Name: course_subjects fk_course_subjects_degree; Type: FK CONSTRAINT; Schema: academic; Owner: postgres
+-- Name: course_subjects fk_course_subjects_degree; Type: FK CONSTRAINT; Schema: academic; Owner: -
 --
 
 ALTER TABLE ONLY academic.course_subjects
@@ -1641,7 +1541,7 @@ ALTER TABLE ONLY academic.course_subjects
 
 
 --
--- Name: course_subjects fk_course_subjects_subject; Type: FK CONSTRAINT; Schema: academic; Owner: postgres
+-- Name: course_subjects fk_course_subjects_subject; Type: FK CONSTRAINT; Schema: academic; Owner: -
 --
 
 ALTER TABLE ONLY academic.course_subjects
@@ -1649,7 +1549,7 @@ ALTER TABLE ONLY academic.course_subjects
 
 
 --
--- Name: pg_education_period pg_education_period_detail_fkey; Type: FK CONSTRAINT; Schema: admission; Owner: postgres
+-- Name: pg_education_period pg_education_period_detail_fkey; Type: FK CONSTRAINT; Schema: admission; Owner: -
 --
 
 ALTER TABLE ONLY admission.pg_education_period
@@ -1657,7 +1557,7 @@ ALTER TABLE ONLY admission.pg_education_period
 
 
 --
--- Name: document_coordinator_mapping fk_document_coordinator_mapping_login; Type: FK CONSTRAINT; Schema: auth; Owner: postgres
+-- Name: document_coordinator_mapping fk_document_coordinator_mapping_login; Type: FK CONSTRAINT; Schema: auth; Owner: -
 --
 
 ALTER TABLE ONLY auth.document_coordinator_mapping
@@ -1665,7 +1565,7 @@ ALTER TABLE ONLY auth.document_coordinator_mapping
 
 
 --
--- Name: exam_application fk_exam_application_academic_year; Type: FK CONSTRAINT; Schema: examination; Owner: postgres
+-- Name: exam_application fk_exam_application_academic_year; Type: FK CONSTRAINT; Schema: examination; Owner: -
 --
 
 ALTER TABLE ONLY examination.exam_application
@@ -1673,7 +1573,7 @@ ALTER TABLE ONLY examination.exam_application
 
 
 --
--- Name: exam_application_details fk_exam_application_details_application; Type: FK CONSTRAINT; Schema: examination; Owner: postgres
+-- Name: exam_application_details fk_exam_application_details_application; Type: FK CONSTRAINT; Schema: examination; Owner: -
 --
 
 ALTER TABLE ONLY examination.exam_application_details
@@ -1681,7 +1581,7 @@ ALTER TABLE ONLY examination.exam_application_details
 
 
 --
--- Name: exam_application_details fk_exam_application_details_subject; Type: FK CONSTRAINT; Schema: examination; Owner: postgres
+-- Name: exam_application_details fk_exam_application_details_subject; Type: FK CONSTRAINT; Schema: examination; Owner: -
 --
 
 ALTER TABLE ONLY examination.exam_application_details
@@ -1689,7 +1589,7 @@ ALTER TABLE ONLY examination.exam_application_details
 
 
 --
--- Name: application_fee application_fee_academic_year_fkey; Type: FK CONSTRAINT; Schema: fees; Owner: postgres
+-- Name: application_fee application_fee_academic_year_fkey; Type: FK CONSTRAINT; Schema: fees; Owner: -
 --
 
 ALTER TABLE ONLY fees.application_fee
@@ -1697,7 +1597,7 @@ ALTER TABLE ONLY fees.application_fee
 
 
 --
--- Name: application_fee application_fee_category_fkey; Type: FK CONSTRAINT; Schema: fees; Owner: postgres
+-- Name: application_fee application_fee_category_fkey; Type: FK CONSTRAINT; Schema: fees; Owner: -
 --
 
 ALTER TABLE ONLY fees.application_fee
@@ -1705,7 +1605,7 @@ ALTER TABLE ONLY fees.application_fee
 
 
 --
--- Name: application_fee application_fee_course_fkey; Type: FK CONSTRAINT; Schema: fees; Owner: postgres
+-- Name: application_fee application_fee_course_fkey; Type: FK CONSTRAINT; Schema: fees; Owner: -
 --
 
 ALTER TABLE ONLY fees.application_fee
@@ -1713,7 +1613,7 @@ ALTER TABLE ONLY fees.application_fee
 
 
 --
--- Name: application_fee application_fee_degree_fkey; Type: FK CONSTRAINT; Schema: fees; Owner: postgres
+-- Name: application_fee application_fee_degree_fkey; Type: FK CONSTRAINT; Schema: fees; Owner: -
 --
 
 ALTER TABLE ONLY fees.application_fee
@@ -1721,7 +1621,7 @@ ALTER TABLE ONLY fees.application_fee
 
 
 --
--- Name: exam_fee exam_fee_academic_year_fkey; Type: FK CONSTRAINT; Schema: fees; Owner: postgres
+-- Name: exam_fee exam_fee_academic_year_fkey; Type: FK CONSTRAINT; Schema: fees; Owner: -
 --
 
 ALTER TABLE ONLY fees.exam_fee
@@ -1729,7 +1629,7 @@ ALTER TABLE ONLY fees.exam_fee
 
 
 --
--- Name: exam_fee exam_fee_course_fkey; Type: FK CONSTRAINT; Schema: fees; Owner: postgres
+-- Name: exam_fee exam_fee_course_fkey; Type: FK CONSTRAINT; Schema: fees; Owner: -
 --
 
 ALTER TABLE ONLY fees.exam_fee
@@ -1737,7 +1637,7 @@ ALTER TABLE ONLY fees.exam_fee
 
 
 --
--- Name: exam_fee exam_fee_degree_fkey; Type: FK CONSTRAINT; Schema: fees; Owner: postgres
+-- Name: exam_fee exam_fee_degree_fkey; Type: FK CONSTRAINT; Schema: fees; Owner: -
 --
 
 ALTER TABLE ONLY fees.exam_fee
@@ -1745,7 +1645,7 @@ ALTER TABLE ONLY fees.exam_fee
 
 
 --
--- Name: admission_fee_conditional_charge fk_admission_fee_conditional_charge_condition; Type: FK CONSTRAINT; Schema: fees; Owner: postgres
+-- Name: admission_fee_conditional_charge fk_admission_fee_conditional_charge_condition; Type: FK CONSTRAINT; Schema: fees; Owner: -
 --
 
 ALTER TABLE ONLY fees.admission_fee_conditional_charge
@@ -1753,7 +1653,7 @@ ALTER TABLE ONLY fees.admission_fee_conditional_charge
 
 
 --
--- Name: fee_collection_manual_details fk_fee_collection_manual_details_header; Type: FK CONSTRAINT; Schema: fees; Owner: postgres
+-- Name: fee_collection_manual_details fk_fee_collection_manual_details_header; Type: FK CONSTRAINT; Schema: fees; Owner: -
 --
 
 ALTER TABLE ONLY fees.fee_collection_manual_details
@@ -1761,7 +1661,7 @@ ALTER TABLE ONLY fees.fee_collection_manual_details
 
 
 --
--- Name: admission_fee_structure_details fk_fee_details_header; Type: FK CONSTRAINT; Schema: fees; Owner: postgres
+-- Name: admission_fee_structure_details fk_fee_details_header; Type: FK CONSTRAINT; Schema: fees; Owner: -
 --
 
 ALTER TABLE ONLY fees.admission_fee_structure_details
@@ -1769,7 +1669,7 @@ ALTER TABLE ONLY fees.admission_fee_structure_details
 
 
 --
--- Name: courses fk_course_degree; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: courses fk_course_degree; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.courses
@@ -1777,7 +1677,7 @@ ALTER TABLE ONLY public.courses
 
 
 --
--- Name: degrees fk_degree_university; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: degrees fk_degree_university; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.degrees
@@ -1785,7 +1685,7 @@ ALTER TABLE ONLY public.degrees
 
 
 --
--- Name: support_ticket_messages support_ticket_messages_ticket_id_fkey; Type: FK CONSTRAINT; Schema: support; Owner: postgres
+-- Name: support_ticket_messages support_ticket_messages_ticket_id_fkey; Type: FK CONSTRAINT; Schema: support; Owner: -
 --
 
 ALTER TABLE ONLY support.support_ticket_messages
@@ -1793,7 +1693,7 @@ ALTER TABLE ONLY support.support_ticket_messages
 
 
 --
--- Name: support_tickets support_tickets_issue_id_fkey; Type: FK CONSTRAINT; Schema: support; Owner: postgres
+-- Name: support_tickets support_tickets_issue_id_fkey; Type: FK CONSTRAINT; Schema: support; Owner: -
 --
 
 ALTER TABLE ONLY support.support_tickets
@@ -1801,7 +1701,7 @@ ALTER TABLE ONLY support.support_tickets
 
 
 --
--- Name: support_tickets support_tickets_status_id_fkey; Type: FK CONSTRAINT; Schema: support; Owner: postgres
+-- Name: support_tickets support_tickets_status_id_fkey; Type: FK CONSTRAINT; Schema: support; Owner: -
 --
 
 ALTER TABLE ONLY support.support_tickets
@@ -1809,16 +1709,8 @@ ALTER TABLE ONLY support.support_tickets
 
 
 --
--- Name: SCHEMA public; Type: ACL; Schema: -; Owner: postgres
---
-
-REVOKE USAGE ON SCHEMA public FROM PUBLIC;
-GRANT ALL ON SCHEMA public TO PUBLIC;
-
-
---
 -- PostgreSQL database dump complete
 --
 
-\unrestrict c02sQiIarF3EUAZ6pDuXr9Y5neskjlsEnsGwfZf0Zcfc1IFlhK1yWKom9ZXtn3d
+\unrestrict SyqzoEn8CwWYiY5v4YstD1EBctCMhgGsVKL0l0z9T5tjBz0lLiXwD3R3SAVoPFU
 
