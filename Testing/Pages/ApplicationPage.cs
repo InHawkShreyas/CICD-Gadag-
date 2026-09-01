@@ -54,13 +54,13 @@ public class ApplicationPage(IPage page)
             "Female" => GenderFemale,
             _ => throw new ArgumentException($"Unsupported gender: {gender}")
         };
-        await target.CheckAsync(new() { Force = true });
+        await target.EvaluateAsync("el => el.click()");
     }
 
     public async Task SelectKarnatakaAsync(bool isFromKarnataka)
     {
         ILocator target = isFromKarnataka ? KarnatakaYes : KarnatakaNo;
-        await target.CheckAsync(new() { Force = true });
+        await target.EvaluateAsync("el => el.click()");
     }
 
     public async Task FillParentsAsync(
@@ -147,13 +147,13 @@ public class ApplicationPage(IPage page)
     public async Task SetHostelRequiredAsync(bool required)
     {
         ILocator target = required ? HostelYes : HostelNo;
-        await target.CheckAsync(new() { Force = true });
+        await target.EvaluateAsync("el => el.click()");
     }
 
     public async Task SetTransportRequiredAsync(bool required)
     {
         ILocator target = required ? TransportYes : TransportNo;
-        await target.CheckAsync(new() { Force = true });
+        await target.EvaluateAsync("el => el.click()");
     }
 
     // ============================================================
