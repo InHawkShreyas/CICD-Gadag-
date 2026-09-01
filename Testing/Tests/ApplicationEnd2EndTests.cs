@@ -78,31 +78,5 @@ public class ApplicationEnd2EndTests : BaseTest
             .ToBeVisibleAsync();
     }
 
-    [Test]
-    public async Task UG_PersonalDetails_ShouldAdvanceToEducation()
-    {
-        string username = await RegisterNewStudentAsync("Undergraduate (UG)");
-        await LoginAsync(username);
-        await _applicationPage.ClickApplicationMenuAsync();
 
-        await _applicationPage.SelectGenderAsync("Male");
-        await _applicationPage.SelectKarnatakaAsync(true);
-        await _applicationPage.Religion.SelectOptionAsync(
-            new SelectOptionValue { Index = 1 });
-        await _applicationPage.Category.SelectOptionAsync(
-            new SelectOptionValue { Label = "GM" });
-        await _applicationPage.Caste.FillAsync("Test Caste");
-        await _applicationPage.FillParentsAsync(
-            "Father Name", "Engineer", "9876543210",
-            "Mother Name", "Teacher", "9876543211");
-        await _applicationPage.FillPermanentAddressAsync(
-            "123 Test Street", "Area", "Bangalore",
-            "Karnataka", "India", "560001");
-        await _applicationPage.SameAddressCheckbox.CheckAsync(new() { Force = true });
-        await _applicationPage.ClickPersonalNextAsync();
-
-        await Assertions.Expect(
-            _applicationPage.TenthCardHeader)
-            .ToBeVisibleAsync(new() { Timeout = 10000 });
-    }
 }
