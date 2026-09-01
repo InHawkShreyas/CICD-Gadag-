@@ -21,7 +21,6 @@ env:
   TARGET_FRAMEWORK: 'net8.0'
   BUILD_CONFIGURATION: 'Release'
   API_PROJECT_PATH: 'backend/UniversitySystem.Api/UniversitySystem.Api.csproj'
-  INFRASTRUCTURE_PROJECT_PATH: 'backend/UniversitySystem.Infrastructure/UniversitySystem.Infrastructure.csproj'
 
 jobs:
 
@@ -91,17 +90,20 @@ jobs:
       - name: Verify SDK version
         run: dotnet --version
 
+      - name: Create database schema
+        env:
+          PGPASSWORD: ${{ secrets.DB_PASSWORD }}
+        run: |
+          psql -h localhost -U postgres -d gadag -f database/schema.sql
+
+      - name: Seed database
+        env:
+          PGPASSWORD: ${{ secrets.DB_PASSWORD }}
+        run: |
+          psql -h localhost -U postgres -d gadag -f database/seed.sql
+
       - name: Restore backend packages
         run: dotnet restore ${{ env.API_PROJECT_PATH }}
-
-      - name: Apply database migrations
-        env:
-          ConnectionStrings__DefaultConnection: "Host=localhost;Port=5432;Database=gadag;Username=postgres;Password=${{ secrets.DB_PASSWORD }}"
-        run: |
-          dotnet tool install --global dotnet-ef
-          dotnet ef database update \
-            --project ${{ env.INFRASTRUCTURE_PROJECT_PATH }} \
-            --startup-project ${{ env.API_PROJECT_PATH }}
 
       - name: Build backend
         run: dotnet build ${{ env.API_PROJECT_PATH }} --configuration ${{ env.BUILD_CONFIGURATION }} --no-restore
@@ -156,7 +158,13 @@ jobs:
           sudo apt-get install -y libasound2t64 libgbm1 libnss3 libxss1 \
             libatk-bridge2.0-0 libgtk-3-0 libx11-xcb1 libxcomposite1 \
             libxcursor1 libxdamage1 libxi6 libxtst6 libpango-1.0-0 \
-            libcairo2 libdrm2 libxrandr2 libxfixes3
+            libcairo2 libdrm2 libxrandr2 libxfixes3 \
+            libwoff1 libvpx9 libevent-2.1-7t64 libopus0 \
+            libgstreamer-plugins-base1.0-0 libgstreamer-gl1.0-0 \
+            libgstreamer-plugins-bad1.0-0 libflite1 libavif16 \
+            libharfbuzz-icu0 libsecret-1-0 libhyphen0 \
+            libwayland-server0 libmanette-0.2-0 libgles2 \
+            gstreamer1.0-libav
 
       - name: Install Playwright browsers
         working-directory: Testing
