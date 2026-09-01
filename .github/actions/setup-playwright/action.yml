@@ -36,7 +36,17 @@ runs:
         restore-keys: |
           playwright-${{ runner.os }}-${{ inputs.browser }}-
 
+    - name: Install system dependencies for Playwright
+      shell: bash
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libasound2t64 libgbm1 libnss3 libxss1 \
+          libatk-bridge2.0-0 libgtk-3-0 libx11-xcb1 libxcomposite1 \
+          libxcursor1 libxdamage1 libxi6 libxtst6 libpango-1.0-0 \
+          libcairo2 libdrm2 libxrandr2 libxfixes3 fonts-liberation \
+          libappindicator3-1 xdg-utils
+
     - name: Install Playwright browsers
       shell: pwsh
       run: |
-        ./Testing/bin/${{ inputs.build-configuration }}/${{ inputs.target-framework }}/playwright.ps1 install --with-deps ${{ inputs.browser }}
+        ./Testing/bin/${{ inputs.build-configuration }}/${{ inputs.target-framework }}/playwright.ps1 install ${{ inputs.browser }}
