@@ -128,6 +128,9 @@ jobs:
             --project ${{ env.INFRASTRUCTURE_PROJECT_PATH }} \
             --startup-project ${{ env.API_PROJECT_PATH }}
 
+      - name: Build backend
+        run: dotnet build ${{ env.API_PROJECT_PATH }} --configuration Release --no-restore
+
       - name: Start backend
         env:
           ASPNETCORE_URLS: http://localhost:5063
@@ -141,10 +144,11 @@ jobs:
         run: |
           dotnet run \
             --project ${{ env.API_PROJECT_PATH }} \
-            --configuration Release &
+            --configuration Release \
+            --no-build &
 
       - name: Wait for backend
-        run: npx wait-on http://localhost:5063 --timeout 60000
+        run: npx wait-on http://localhost:5063 --timeout 120000
 
       - name: Wait for frontend
         run: npx wait-on http://localhost:5173 --timeout 60000
