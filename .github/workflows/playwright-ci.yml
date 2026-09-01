@@ -155,7 +155,7 @@ jobs:
       - name: Install Playwright browsers
         working-directory: Testing
         run: |
-          pwsh bin/${{ env.BUILD_CONFIGURATION }}/${{ env.TARGET_FRAMEWORK }}/playwright.ps1 install ${{ matrix.browser }}
+          pwsh -File bin/${{ env.BUILD_CONFIGURATION }}/${{ env.TARGET_FRAMEWORK }}/playwright.ps1 install ${{ matrix.browser }}
 
       - name: Run Playwright tests
         working-directory: Testing
