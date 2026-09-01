@@ -102,21 +102,6 @@ jobs:
       - name: Restore backend packages
         run: dotnet restore ${{ env.API_PROJECT_PATH }}
 
-      - name: Setup Node.js (frontend)
-        uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
-        with:
-          node-version: '20'
-
-      - name: Install frontend dependencies
-        working-directory: frontend/web
-        run: npm ci
-
-      - name: Start frontend
-        working-directory: frontend/web
-        env:
-          VITE_API_URL: http://localhost:5063/api
-        run: npm run dev &
-
       - name: Apply database migrations
         env:
           ConnectionStrings__DefaultConnection: >-
@@ -129,7 +114,10 @@ jobs:
             --startup-project ${{ env.API_PROJECT_PATH }}
 
       - name: Build backend
-        run: dotnet build ${{ env.API_PROJECT_PATH }} --configuration Release --no-restore
+        run: dotnet build ${{ env.API_PROJECT_PATH }} --configuration ${{ env.BUILD_CONFIGURATION }} --no-restore
+
+      - name: Install wait-on
+        run: npm install -g wait-on
 
       - name: Start backend
         env:
@@ -144,14 +132,29 @@ jobs:
         run: |
           dotnet run \
             --project ${{ env.API_PROJECT_PATH }} \
-            --configuration Release \
+            --configuration ${{ env.BUILD_CONFIGURATION }} \
             --no-build &
 
       - name: Wait for backend
-        run: npx wait-on http://localhost:5063 --timeout 120000
+        run: wait-on tcp:5063 --timeout 120000
+
+      - name: Setup Node.js
+        uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
+        with:
+          node-version: '20'
+
+      - name: Install frontend dependencies
+        working-directory: frontend/web
+        run: npm ci
+
+      - name: Start frontend
+        working-directory: frontend/web
+        env:
+          VITE_API_URL: http://localhost:5063/api
+        run: npm run dev &
 
       - name: Wait for frontend
-        run: npx wait-on http://localhost:5173 --timeout 60000
+        run: wait-on http://localhost:5173 --timeout 60000
 
       - name: Setup Playwright
         uses: ./.github/actions/setup-playwright
