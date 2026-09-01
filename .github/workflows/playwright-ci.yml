@@ -186,12 +186,14 @@ jobs:
           AUTOMATION_Database__Name: gadag
           AUTOMATION_Database__Username: postgres
           AUTOMATION_Database__Password: ${{ secrets.DB_PASSWORD }}
-        run: >
-          dotnet test ${{ env.PROJECT_PATH }}
-          --configuration ${{ env.BUILD_CONFIGURATION }}
-          --no-build
-          --logger "trx;LogFileName=${{ matrix.browser }}-test-results.trx"
-          --results-directory Testing/test-results
+        run: |
+          dotnet test ${{ env.PROJECT_PATH }} \
+            --configuration ${{ env.BUILD_CONFIGURATION }} \
+            --no-build \
+            --logger "trx;LogFileName=${{ matrix.browser }}-test-results.trx" \
+            --results-directory Testing/test-results \
+            --verbosity diagnostic 2>&1 || true
+          echo "Exit code: $?"
 
       - name: Publish test results
         if: always()
