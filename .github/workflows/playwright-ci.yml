@@ -98,6 +98,9 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
+      - name: Restore backend packages
+        run: dotnet restore ${{ env.API_PROJECT_PATH }}
+
       - name: Setup Node.js (frontend)
         uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
         with:
@@ -138,7 +141,7 @@ jobs:
             --project ${{ env.API_PROJECT_PATH }} \
             --configuration Release &
 
-          npx wait-on http://localhost:5063/health --timeout 60000
+          npx wait-on http://localhost:5063/swagger/index.html --timeout 60000
 
       - name: Wait for frontend
         run: npx wait-on http://localhost:5173 --timeout 60000
