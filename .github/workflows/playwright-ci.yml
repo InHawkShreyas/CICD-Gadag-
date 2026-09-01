@@ -54,9 +54,8 @@ jobs:
 
       - name: Build
         run: |
-          dotnet publish ${{ env.PROJECT_PATH }} \
+          dotnet build ${{ env.PROJECT_PATH }} \
             --configuration ${{ env.BUILD_CONFIGURATION }} \
-            --output Testing/bin/${{ env.BUILD_CONFIGURATION }}/${{ env.TARGET_FRAMEWORK }} \
             --no-restore
 
       - name: Upload build output
@@ -167,7 +166,9 @@ jobs:
 
       - name: Run Playwright tests
         run: >
-          dotnet test Testing/bin/${{ env.BUILD_CONFIGURATION }}/${{ env.TARGET_FRAMEWORK }}/PlaywrightTests.dll
+          dotnet test ${{ env.PROJECT_PATH }}
+          --configuration ${{ env.BUILD_CONFIGURATION }}
+          --no-build
           --logger "trx;LogFileName=${{ matrix.browser }}-test-results.trx"
           --results-directory Testing/test-results
         env:
