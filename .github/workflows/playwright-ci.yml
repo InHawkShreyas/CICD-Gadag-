@@ -108,9 +108,7 @@ jobs:
 
       - name: Apply database migrations
         env:
-          ConnectionStrings__DefaultConnection: >-
-            Host=localhost;Port=5432;Database=gadag;
-            Username=postgres;Password=${{ secrets.DB_PASSWORD }}
+          ConnectionStrings__DefaultConnection: "Host=localhost;Port=5432;Database=gadag;Username=postgres;Password=${{ secrets.DB_PASSWORD }}"
         run: |
           dotnet tool install --global dotnet-ef
           dotnet ef database update \
@@ -168,6 +166,10 @@ jobs:
           browser: ${{ matrix.browser }}
 
       - name: Run Playwright tests
+        run: >
+          dotnet test Testing/bin/${{ env.BUILD_CONFIGURATION }}/${{ env.TARGET_FRAMEWORK }}/PlaywrightTests.dll
+          --logger "trx;LogFileName=${{ matrix.browser }}-test-results.trx"
+          --results-directory Testing/test-results
         env:
           AUTOMATION_BaseUrl: http://localhost:5173
           AUTOMATION_BackendUrl: http://localhost:5063
@@ -185,13 +187,6 @@ jobs:
           AUTOMATION_Database__Name: gadag
           AUTOMATION_Database__Username: postgres
           AUTOMATION_Database__Password: ${{ secrets.DB_PASSWORD }}
-
-        run: >
-          dotnet test ${{ env.PROJECT_PATH }}
-          --configuration ${{ env.BUILD_CONFIGURATION }}
-          --no-build
-          --logger "trx;LogFileName=${{ matrix.browser }}-test-results.trx"
-          --results-directory Testing/test-results
 
       - name: Publish test results
         if: always()
