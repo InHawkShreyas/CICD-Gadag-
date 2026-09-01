@@ -53,10 +53,11 @@ jobs:
         run: dotnet restore ${{ env.PROJECT_PATH }}
 
       - name: Build
-        run: dotnet publish ${{ env.PROJECT_PATH }} \
-          --configuration ${{ env.BUILD_CONFIGURATION }} \
-          --output Testing/bin/${{ env.BUILD_CONFIGURATION }}/${{ env.TARGET_FRAMEWORK }} \
-          --no-restore
+        run: |
+          dotnet publish ${{ env.PROJECT_PATH }} \
+            --configuration ${{ env.BUILD_CONFIGURATION }} \
+            --output Testing/bin/${{ env.BUILD_CONFIGURATION }}/${{ env.TARGET_FRAMEWORK }} \
+            --no-restore
 
       - name: Upload build output
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
