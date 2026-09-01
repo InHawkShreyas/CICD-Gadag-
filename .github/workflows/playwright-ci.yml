@@ -162,6 +162,15 @@ jobs:
         run: |
           pwsh Testing/bin/${{ env.BUILD_CONFIGURATION }}/${{ env.TARGET_FRAMEWORK }}/playwright.ps1 install ${{ matrix.browser }}
 
+      - name: Verify test assembly exists
+        run: |
+          echo "=== Checking test output directory ==="
+          ls -la Testing/bin/Release/net8.0/ || echo "Directory not found"
+          echo "=== Checking for test DLL ==="
+          find Testing -name "PlaywrightTests.dll" 2>/dev/null || echo "DLL not found"
+          echo "=== Checking for runtimeconfig ==="
+          find Testing -name "*.runtimeconfig.json" 2>/dev/null || echo "No runtimeconfig found"
+
       - name: Run Playwright tests
         env:
           AUTOMATION_BaseUrl: http://localhost:5173
