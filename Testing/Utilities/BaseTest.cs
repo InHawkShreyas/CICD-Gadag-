@@ -15,10 +15,23 @@ public class BaseTest
     {
         Playwright = await Microsoft.Playwright.Playwright.CreateAsync();
 
-        Browser = await Playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+        var browserName = ConfigReader.Browser.ToLowerInvariant();
+        Browser = browserName switch
         {
-            Headless = ConfigReader.Headless
-        });
+            "chromium" => await Playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+            {
+                Headless = ConfigReader.Headless
+            }),
+            "firefox" => await Playwright.Firefox.LaunchAsync(new BrowserTypeLaunchOptions
+            {
+                Headless = ConfigReader.Headless
+            }),
+            "webkit" => await Playwright.Webkit.LaunchAsync(new BrowserTypeLaunchOptions
+            {
+                Headless = ConfigReader.Headless
+            }),
+            _ => throw new ArgumentException($"Unsupported browser: '{browserName}'")
+        };
 
         Context = await Browser.NewContextAsync(new BrowserNewContextOptions
         {

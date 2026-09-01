@@ -152,6 +152,11 @@ jobs:
             libxcursor1 libxdamage1 libxi6 libxtst6 libpango-1.0-0 \
             libcairo2 libdrm2 libxrandr2 libxfixes3
 
+      - name: Install Playwright browsers
+        working-directory: Testing
+        run: |
+          pwsh bin/${{ env.BUILD_CONFIGURATION }}/${{ env.TARGET_FRAMEWORK }}/playwright.ps1 install ${{ matrix.browser }}
+
       - name: Run Playwright tests
         working-directory: Testing
         env:
@@ -174,11 +179,6 @@ jobs:
             --logger "trx;LogFileName=${{ matrix.browser }}-test-results.trx" \
             --results-directory test-results 2>&1 || true
           echo "Exit code: $?"
-
-      - name: Install Playwright browsers
-        working-directory: Testing
-        run: |
-          pwsh bin/${{ env.BUILD_CONFIGURATION }}/${{ env.TARGET_FRAMEWORK }}/playwright.ps1 install ${{ matrix.browser }}
 
       - name: Publish test results
         if: always()
