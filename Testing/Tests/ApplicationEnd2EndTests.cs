@@ -92,7 +92,6 @@ public class ApplicationEnd2EndTests : BaseTest
         await _applicationPage.Category.SelectOptionAsync(
             new SelectOptionValue { Label = "GM" });
         await _applicationPage.Caste.FillAsync("Test Caste");
-        await _applicationPage.AnnualIncome.FillAsync("100000");
         await _applicationPage.FillParentsAsync(
             "Father Name", "Engineer", "9876543210",
             "Mother Name", "Teacher", "9876543211");
