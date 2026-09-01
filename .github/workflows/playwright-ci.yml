@@ -22,6 +22,7 @@ env:
   BUILD_CONFIGURATION: 'Release'
   PROJECT_PATH: 'Testing/PlaywrightTests.csproj'
   API_PROJECT_PATH: 'backend/UniversitySystem.Api/UniversitySystem.Api.csproj'
+  INFRASTRUCTURE_PROJECT_PATH: 'backend/UniversitySystem.Infrastructure/UniversitySystem.Infrastructure.csproj'
 
 jobs:
 
@@ -124,7 +125,8 @@ jobs:
         run: |
           dotnet tool install --global dotnet-ef
           dotnet ef database update \
-            --project ${{ env.API_PROJECT_PATH }}
+            --project ${{ env.INFRASTRUCTURE_PROJECT_PATH }} \
+            --startup-project ${{ env.API_PROJECT_PATH }}
 
       - name: Start backend
         env:
@@ -141,7 +143,8 @@ jobs:
             --project ${{ env.API_PROJECT_PATH }} \
             --configuration Release &
 
-          npx wait-on http://localhost:5063/swagger/index.html --timeout 60000
+      - name: Wait for backend
+        run: npx wait-on http://localhost:5063 --timeout 60000
 
       - name: Wait for frontend
         run: npx wait-on http://localhost:5173 --timeout 60000
