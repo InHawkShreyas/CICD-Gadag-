@@ -1,0 +1,194 @@
+name: Playwright CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: playwright-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  read-all
+
+env:
+  DOTNET_VERSION: '8.0.x'
+  TARGET_FRAMEWORK: 'net8.0'
+  BUILD_CONFIGURATION: 'Release'
+  PROJECT_PATH: 'Testing/PlaywrightTests.csproj'
+  API_PROJECT_PATH: 'backend/UniversitySystem.Api/UniversitySystem.Api.csproj'
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@3951f0dfe7a07e2313ec93c75700083e2005cbab # v4.1.0
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4 # v4.2.2
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('Testing/PlaywrightTests.csproj') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-
+
+      - name: Restore NuGet packages
+        run: dotnet restore ${{ env.PROJECT_PATH }}
+
+      - name: Build
+        run: dotnet build ${{ env.PROJECT_PATH }} --configuration ${{ env.BUILD_CONFIGURATION }} --no-restore
+
+      - name: Upload build output
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: playwright-build
+          path: Testing/bin/${{ env.BUILD_CONFIGURATION }}/${{ env.TARGET_FRAMEWORK }}
+          include-hidden-files: true
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      checks: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: gadag
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@3951f0dfe7a07e2313ec93c75700083e2005cbab # v4.1.0
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Setup Node.js (frontend)
+        uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
+        with:
+          node-version: '20'
+
+      - name: Install frontend dependencies
+        working-directory: frontend/web
+        run: npm ci
+
+      - name: Start frontend
+        working-directory: frontend/web
+        env:
+          VITE_API_URL: http://localhost:5063/api
+        run: npm run dev &
+
+      - name: Apply database migrations
+        env:
+          ConnectionStrings__DefaultConnection: >-
+            Host=localhost;Port=5432;Database=gadag;
+            Username=postgres;Password=${{ secrets.DB_PASSWORD }}
+        run: |
+          dotnet tool install --global dotnet-ef
+          dotnet ef database update \
+            --project ${{ env.API_PROJECT_PATH }}
+
+      - name: Start backend
+        env:
+          ASPNETCORE_URLS: http://localhost:5063
+          ASPNETCORE_ENVIRONMENT: Development
+          ConnectionStrings__DefaultConnection: >-
+            Host=localhost;Port=5432;Database=gadag;
+            Username=postgres;Password=${{ secrets.DB_PASSWORD }}
+          Jwt__Key: ${{ secrets.JWT_KEY }}
+          Jwt__Issuer: ${{ secrets.JWT_ISSUER }}
+          Jwt__Audience: ${{ secrets.JWT_AUDIENCE }}
+        run: |
+          dotnet run \
+            --project ${{ env.API_PROJECT_PATH }} \
+            --configuration Release &
+
+          npx wait-on http://localhost:5063/health --timeout 60000
+
+      - name: Wait for frontend
+        run: npx wait-on http://localhost:5173 --timeout 60000
+
+      - name: Setup Playwright
+        uses: ./.github/actions/setup-playwright
+        with:
+          build-configuration: ${{ env.BUILD_CONFIGURATION }}
+          target-framework: ${{ env.TARGET_FRAMEWORK }}
+          browser: ${{ matrix.browser }}
+
+      - name: Run Playwright tests
+        env:
+          AUTOMATION_BaseUrl: http://localhost:5173
+          AUTOMATION_BackendUrl: http://localhost:5063
+          AUTOMATION_Headless: 'true'
+          AUTOMATION_Browser: ${{ matrix.browser }}
+
+          AUTOMATION_Credentials__Student__Username: ${{ secrets.STUDENT_USERNAME }}
+          AUTOMATION_Credentials__Student__Password: ${{ secrets.STUDENT_PASSWORD }}
+
+          AUTOMATION_Credentials__Admin__Username: ${{ secrets.ADMIN_USERNAME }}
+          AUTOMATION_Credentials__Admin__Password: ${{ secrets.ADMIN_PASSWORD }}
+
+          AUTOMATION_Database__Host: localhost
+          AUTOMATION_Database__Port: '5432'
+          AUTOMATION_Database__Name: gadag
+          AUTOMATION_Database__Username: postgres
+          AUTOMATION_Database__Password: ${{ secrets.DB_PASSWORD }}
+
+        run: >
+          dotnet test ${{ env.PROJECT_PATH }}
+          --configuration ${{ env.BUILD_CONFIGURATION }}
+          --no-build
+          --logger "trx;LogFileName=${{ matrix.browser }}-test-results.trx"
+          --results-directory Testing/test-results
+
+      - name: Publish test results
+        if: always()
+        uses: dorny/test-reporter@v1
+        with:
+          name: Playwright Results - ${{ matrix.browser }}
+          path: Testing/test-results/${{ matrix.browser }}-test-results.trx
+          reporter: dotnet-trx
+          fail-on-error: true
+
+      - name: Upload failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: failure-artifacts-${{ matrix.browser }}
+          path: Testing/test-results/
+          if-no-files-found: warn
